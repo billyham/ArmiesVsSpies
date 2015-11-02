@@ -1,12 +1,15 @@
 //
 //  SPYAppDelegate.m
-//  Supremacy: The Game of the Superpowers
+//  Armies vs Spies
 //
 //  Created by Japhy Ryder on 11/13/12.
 //  Copyright (c) 2012 Ham Again LLC. All rights reserved.
 //
 
 #import "SPYAppDelegate.h"
+#import "SPYRootViewControllerIPadViewController.h"
+#import "SPYGameBoardIPadViewController.h"
+
 
 @implementation SPYAppDelegate
 
@@ -14,14 +17,87 @@
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
+@synthesize loadGameData;
+@synthesize loadStartData;
+@synthesize changeData;
+
+@synthesize matchControl;
+
+
+
+#pragma mark - at launch
+
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+    
+    SPYRootViewControllerIPadViewController* rootViewController = [[SPYRootViewControllerIPadViewController alloc] initWithNibName:nil bundle:nil];
+    
+    NSManagedObjectContext* context = [self managedObjectContext];
+    
+    if (!context){
+        //error
+        NSLog(@"appdeletate > didFinishLaunching managedObjectContext fails to load");
+    }
+    
+    //initiate the loadGameData object (singleton) and loadStartData (singelton)
+    self.loadGameData = [SPYLoadGameData sharedInstance];
+    self.loadStartData = [SPYLoadStartData sharedInstance];    
+    
+    //set managedObjectcontexton loadGameData and loadStartData
+    self.loadGameData.managedObjectContext = context;
+    self.loadStartData.managedObjectContext = context;
+    
+    //initiate the changeData object (singleton)
+    self.changeData = [SPYChangeData sharedInstance];
+    
+    //set managedObjectContect on changedata
+    self.changeData.managedObjectContext = context;
+    
+    
+    //_____*****Must TEST for whether or not this data exists. When game first loads, it won't...
+    NSInteger countOfNations = [self.changeData getCountOfNations];
+    
+    if (countOfNations != 7){
+    
+        NSLog(@"countOfNations does not equal 7");
+        [self thingsToDoWhenAppIsLaunchedAfterNewlyInstalled];
+    }
+    //______*********_________
+    
+    //pass the managed object context to the root view controller
+    rootViewController.managedObjectContext = context;
+
+    self.window.rootViewController = rootViewController;
     [self.window makeKeyAndVisible];
+    
+    rootViewController = nil;
+    
+    
+    //___________instantiate the matchConrol if necessary
+    
+    if (!matchControl){
+        
+        self.matchControl = [SPYMatchControl sharedInstance];
+        
+        [self.matchControl initialSetup];
+    }
+    
     return YES;
 }
+
+
+-(void)thingsToDoWhenAppIsLaunchedAfterNewlyInstalled{
+    
+    //initialize all the model data
+        [self.loadGameData deleteAndLoadNations];
+//        [self.loadGameData deleteAndLoadTerritories];
+//        [self.loadGameData assignNationToTerritories];
+}
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
@@ -72,6 +148,7 @@
 - (NSManagedObjectContext *)managedObjectContext
 {
     if (_managedObjectContext != nil) {
+        NSLog(@"managedObjectContext is not nil");
         return _managedObjectContext;
     }
     
@@ -90,7 +167,7 @@
     if (_managedObjectModel != nil) {
         return _managedObjectModel;
     }
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Supremacy__The_Game_of_the_Superpowers" withExtension:@"momd"];
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Spies-vs-Armies" withExtension:@"momd"];
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
 }
@@ -103,7 +180,7 @@
         return _persistentStoreCoordinator;
     }
     
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Supremacy__The_Game_of_the_Superpowers.sqlite"];
+    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Spies-vs-Armies.sqlite"];
     
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];

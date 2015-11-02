@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="11G63b" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="History" representedClassName="History" syncable="YES">
+        <attribute name="item" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="matchID" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Match" representedClassName="Match" syncable="YES">
+        <attribute name="currentBattleStage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="currentPlayer" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="currentStage" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="currentTurn" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="dateCompletion" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="dateCreation" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="displayName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="initiatingPlayer" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isActive" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="marketGrain" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="marketMinerals" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="marketOil" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="matchID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="maxPlayers" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="minPlayers" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="numberOfPlayers" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="ruleSet" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Nations" representedClassName="Nations" syncable="YES">
+        <attribute name="color" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="nationToTerr" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Territories" inverseName="terrToNation" inverseEntity="Territories" syncable="YES"/>
+    </entity>
+    <entity name="Players" representedClassName="Players" syncable="YES">
+        <attribute name="displayName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hasLStar" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="hasNuke" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="isActive" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isFriendOfLocal" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isLocalPlayer" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="matchID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="money" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="nationIndex" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="orderInTurn" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="playerID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="resourceGrain" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="resourceLSats" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="resourceMinerals" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="resourceNukes" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="resourceOil" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="ResourceCards" representedClassName="ResourceCards" syncable="YES">
+        <attribute name="displayName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="inDeck" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="isFaceUp" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="matchID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nationInPossession" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="orderInDeck" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="playerIndex" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="relatedNationIndex" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="relatedTerritoryIndex" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="Spies" representedClassName="Spies" syncable="YES">
+        <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="matchID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nationIndex" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="quantity" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="territoryIndex" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="Territories" representedClassName="Territories" syncable="YES">
+        <attribute name="armies" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="brigadeX" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="brigadeY" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="currentNationIndex" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="isNuked" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isSea" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="locationX" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="locationY" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="matchID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nameLabelX" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="nameLabelY" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="nationIndex" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="neutrality" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="population" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="shortName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sizeX" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="sizeY" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="terrToNation" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Nations" inverseName="nationToTerr" inverseEntity="Nations" syncable="YES"/>
+    </entity>
+    <entity name="TerritoriesBorderingJoin" representedClassName="TerritoriesBorderingJoin" syncable="YES">
+        <attribute name="borderingTerritory" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="sourceTerritory" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <fetchRequest name="nationByIndex" entity="Nations" predicateString="index == $INDEX"/>
+    <fetchRequest name="territoriesByMatchID" entity="Territories" predicateString="matchID == $MATCHID"/>
+    <fetchRequest name="territoryByIndex" entity="Territories" predicateString="index == $INDEX"/>
+    <fetchRequest name="territoryByIndexAndMatchID" entity="Territories" predicateString="index == $INDEX AND matchID == $MATCHID"/>
+    <elements>
+        <element name="History" positionX="160" positionY="192" width="128" height="75"/>
+        <element name="Match" positionX="160" positionY="192" width="128" height="315"/>
+        <element name="Nations" positionX="160" positionY="192" width="128" height="105"/>
+        <element name="Players" positionX="153" positionY="475" width="128" height="300"/>
+        <element name="ResourceCards" positionX="153" positionY="336" width="128" height="225"/>
+        <element name="Territories" positionX="-146" positionY="6" width="119" height="345"/>
+        <element name="TerritoriesBorderingJoin" positionX="160" positionY="58" width="128" height="104"/>
+        <element name="Spies" positionX="160" positionY="192" width="128" height="120"/>
+    </elements>
+</model>

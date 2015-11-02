@@ -1,0 +1,1293 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		430978BF1659D8CF002CDF38 /* SPYGameBoardIPadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 430978BD1659D8CF002CDF38 /* SPYGameBoardIPadViewController.m */; };
+		430978C01659D8CF002CDF38 /* SPYGameBoardIPadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 430978BE1659D8CF002CDF38 /* SPYGameBoardIPadViewController.xib */; };
+		4312B60F167075D100680D31 /* SPYNorthSea.m in Sources */ = {isa = PBXBuildFile; fileRef = 4312B60E167075D100680D31 /* SPYNorthSea.m */; };
+		4312B613167076FE00680D31 /* SPYBalticSea.m in Sources */ = {isa = PBXBuildFile; fileRef = 4312B612167076FE00680D31 /* SPYBalticSea.m */; };
+		4312B616167077C200680D31 /* SPYBarentsSea.m in Sources */ = {isa = PBXBuildFile; fileRef = 4312B615167077C200680D31 /* SPYBarentsSea.m */; };
+		4312B6191670789600680D31 /* SPYBayOfBiscay.m in Sources */ = {isa = PBXBuildFile; fileRef = 4312B6181670789600680D31 /* SPYBayOfBiscay.m */; };
+		4312B61C1670796C00680D31 /* SPYMediterraneanSea.m in Sources */ = {isa = PBXBuildFile; fileRef = 4312B61B1670796C00680D31 /* SPYMediterraneanSea.m */; };
+		4312B61F16707A5000680D31 /* SPYSeaOfCrete.m in Sources */ = {isa = PBXBuildFile; fileRef = 4312B61E16707A5000680D31 /* SPYSeaOfCrete.m */; };
+		4312B62216707B4100680D31 /* SPYBlackSea.m in Sources */ = {isa = PBXBuildFile; fileRef = 4312B62116707B4100680D31 /* SPYBlackSea.m */; };
+		4312B62516707C0800680D31 /* SPYRedSea.m in Sources */ = {isa = PBXBuildFile; fileRef = 4312B62416707C0800680D31 /* SPYRedSea.m */; };
+		43156AA2165A065400DCC26C /* SPYWorldMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 43156AA1165A065400DCC26C /* SPYWorldMapView.m */; };
+		431C54C316F1B21B0065C7E2 /* yellowCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = 431C54C116F1B21B0065C7E2 /* yellowCircle.png */; };
+		431C54C416F1B21B0065C7E2 /* yellowCircle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 431C54C216F1B21B0065C7E2 /* yellowCircle@2x.png */; };
+		431DCFC31660B8FA00C8BBED /* SPYTurkey.m in Sources */ = {isa = PBXBuildFile; fileRef = 431DCFC21660B8FA00C8BBED /* SPYTurkey.m */; };
+		431DCFC71660B97D00C8BBED /* SPYMiddleEast.m in Sources */ = {isa = PBXBuildFile; fileRef = 431DCFC61660B97D00C8BBED /* SPYMiddleEast.m */; };
+		431DCFCA1660B9FE00C8BBED /* SPYArabia.m in Sources */ = {isa = PBXBuildFile; fileRef = 431DCFC91660B9FE00C8BBED /* SPYArabia.m */; };
+		431DCFCD1660BA7300C8BBED /* SPYIraq.m in Sources */ = {isa = PBXBuildFile; fileRef = 431DCFCC1660BA7300C8BBED /* SPYIraq.m */; };
+		431DCFD01660BB0E00C8BBED /* SPYIran.m in Sources */ = {isa = PBXBuildFile; fileRef = 431DCFCF1660BB0E00C8BBED /* SPYIran.m */; };
+		431DCFD31660BB9B00C8BBED /* SPYPakistan.m in Sources */ = {isa = PBXBuildFile; fileRef = 431DCFD21660BB9B00C8BBED /* SPYPakistan.m */; };
+		431DCFD61660BC3500C8BBED /* SPYTibet.m in Sources */ = {isa = PBXBuildFile; fileRef = 431DCFD51660BC3500C8BBED /* SPYTibet.m */; };
+		431DCFD91660BCD600C8BBED /* SPYMongolia.m in Sources */ = {isa = PBXBuildFile; fileRef = 431DCFD81660BCD600C8BBED /* SPYMongolia.m */; };
+		431DCFDC1660BD5400C8BBED /* SPYManchuria.m in Sources */ = {isa = PBXBuildFile; fileRef = 431DCFDB1660BD5400C8BBED /* SPYManchuria.m */; };
+		431DCFDF1660BDF700C8BBED /* SPYShantung.m in Sources */ = {isa = PBXBuildFile; fileRef = 431DCFDE1660BDF700C8BBED /* SPYShantung.m */; };
+		431DCFE21660BE8D00C8BBED /* SPYNanling.m in Sources */ = {isa = PBXBuildFile; fileRef = 431DCFE11660BE8D00C8BBED /* SPYNanling.m */; };
+		431DCFE51660C1CF00C8BBED /* SPYIndia.m in Sources */ = {isa = PBXBuildFile; fileRef = 431DCFE41660C1CF00C8BBED /* SPYIndia.m */; };
+		431DCFE81660C26400C8BBED /* SPYBurma.m in Sources */ = {isa = PBXBuildFile; fileRef = 431DCFE71660C26400C8BBED /* SPYBurma.m */; };
+		431DCFEB1660C30000C8BBED /* SPYIndoChina.m in Sources */ = {isa = PBXBuildFile; fileRef = 431DCFEA1660C30000C8BBED /* SPYIndoChina.m */; };
+		431DCFEE1660C38600C8BBED /* SPYIndonesia.m in Sources */ = {isa = PBXBuildFile; fileRef = 431DCFED1660C38500C8BBED /* SPYIndonesia.m */; };
+		431DCFF11660C43500C8BBED /* SPYWesternAustralia.m in Sources */ = {isa = PBXBuildFile; fileRef = 431DCFF01660C43400C8BBED /* SPYWesternAustralia.m */; };
+		431DCFF41660C4D100C8BBED /* SPYEasternAustralia.m in Sources */ = {isa = PBXBuildFile; fileRef = 431DCFF31660C4D100C8BBED /* SPYEasternAustralia.m */; };
+		431DCFF71660C62600C8BBED /* SPYNewZealand.m in Sources */ = {isa = PBXBuildFile; fileRef = 431DCFF61660C62500C8BBED /* SPYNewZealand.m */; };
+		432275E016F04E8800738E36 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 432275DF16F04E8800738E36 /* GameKit.framework */; };
+		4340D881169D5EB100E3CA78 /* SPYBrigadeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4340D880169D5EB100E3CA78 /* SPYBrigadeViewController.m */; };
+		4344FCE416648E7200AD3897 /* SPYLoadStartData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4344FCE316648E7200AD3897 /* SPYLoadStartData.m */; };
+		434A742816A13953005198CF /* SPYTemplateLayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 434A742716A13953005198CF /* SPYTemplateLayerView.m */; };
+		434FE83716C73DC700A69997 /* SPYBattleDrillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 434FE83616C73DC700A69997 /* SPYBattleDrillViewController.m */; };
+		434FE83B16C73E5800A69997 /* SPYBattleDrillBG.m in Sources */ = {isa = PBXBuildFile; fileRef = 434FE83A16C73E5800A69997 /* SPYBattleDrillBG.m */; };
+		4355E13116C798CA00187DC9 /* SPYAttackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4355E13016C798CA00187DC9 /* SPYAttackButton.m */; };
+		4355E13516C798FB00187DC9 /* SPYWithdrawButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4355E13416C798FB00187DC9 /* SPYWithdrawButton.m */; };
+		435B271D1738D4EB00AD3895 /* Spies.m in Sources */ = {isa = PBXBuildFile; fileRef = 435B271C1738D4EB00AD3895 /* Spies.m */; };
+		435B27201738D4EB00AD3895 /* Territories.m in Sources */ = {isa = PBXBuildFile; fileRef = 435B271F1738D4EB00AD3895 /* Territories.m */; };
+		435C3192165B70A20057B48D /* SPYTerritoryTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 435C3191165B70A20057B48D /* SPYTerritoryTemplate.m */; };
+		435C3195165B70D20057B48D /* SPYScandanavia.m in Sources */ = {isa = PBXBuildFile; fileRef = 435C3194165B70D20057B48D /* SPYScandanavia.m */; };
+		435C3198165B71350057B48D /* SPYKola.m in Sources */ = {isa = PBXBuildFile; fileRef = 435C3197165B71350057B48D /* SPYKola.m */; };
+		436DE8F4171561E200F33403 /* TerritoriesBorderingJoin.m in Sources */ = {isa = PBXBuildFile; fileRef = 436DE8F3171561E200F33403 /* TerritoriesBorderingJoin.m */; };
+		436DE8F7171561E200F33403 /* Nations.m in Sources */ = {isa = PBXBuildFile; fileRef = 436DE8F6171561E200F33403 /* Nations.m */; };
+		436DE8FA171561E200F33403 /* Players.m in Sources */ = {isa = PBXBuildFile; fileRef = 436DE8F9171561E200F33403 /* Players.m */; };
+		436DE900171561E200F33403 /* History.m in Sources */ = {isa = PBXBuildFile; fileRef = 436DE8FF171561E200F33403 /* History.m */; };
+		436DE9061715632A00F33403 /* SPYMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 436DE9051715632A00F33403 /* SPYMatch.m */; };
+		43706119165CA436004A003E /* SPYBritishIsles.m in Sources */ = {isa = PBXBuildFile; fileRef = 43706118165CA436004A003E /* SPYBritishIsles.m */; };
+		4370611D165CA6B7004A003E /* SPYIberia.m in Sources */ = {isa = PBXBuildFile; fileRef = 4370611C165CA6B7004A003E /* SPYIberia.m */; };
+		43706120165CA7A0004A003E /* SPYWesternEurope.m in Sources */ = {isa = PBXBuildFile; fileRef = 4370611F165CA7A0004A003E /* SPYWesternEurope.m */; };
+		43706123165CA8F3004A003E /* SPYEasternEurope.m in Sources */ = {isa = PBXBuildFile; fileRef = 43706122165CA8F3004A003E /* SPYEasternEurope.m */; };
+		43706126165CAF4C004A003E /* SPYPoland.m in Sources */ = {isa = PBXBuildFile; fileRef = 43706125165CAF4C004A003E /* SPYPoland.m */; };
+		43706129165CAFCF004A003E /* SPYGreece.m in Sources */ = {isa = PBXBuildFile; fileRef = 43706128165CAFCF004A003E /* SPYGreece.m */; };
+		4370612C165CB049004A003E /* SPYRomania.m in Sources */ = {isa = PBXBuildFile; fileRef = 4370612B165CB049004A003E /* SPYRomania.m */; };
+		43739B041678631E00C96DBB /* SPYSouthChinaSea.m in Sources */ = {isa = PBXBuildFile; fileRef = 43739B031678631D00C96DBB /* SPYSouthChinaSea.m */; };
+		43739B081678641100C96DBB /* SPYJavaSea.m in Sources */ = {isa = PBXBuildFile; fileRef = 43739B071678641100C96DBB /* SPYJavaSea.m */; };
+		43739B0B167864CE00C96DBB /* SPYBayOfBengal.m in Sources */ = {isa = PBXBuildFile; fileRef = 43739B0A167864CE00C96DBB /* SPYBayOfBengal.m */; };
+		43739B0E167865F400C96DBB /* SPYTimorSea.m in Sources */ = {isa = PBXBuildFile; fileRef = 43739B0D167865F400C96DBB /* SPYTimorSea.m */; };
+		43739B11167866BB00C96DBB /* SPYSharkBay.m in Sources */ = {isa = PBXBuildFile; fileRef = 43739B10167866BB00C96DBB /* SPYSharkBay.m */; };
+		43739B141678676E00C96DBB /* SPYTasmanSea.m in Sources */ = {isa = PBXBuildFile; fileRef = 43739B131678676D00C96DBB /* SPYTasmanSea.m */; };
+		437449C816CCEA67004285C4 /* SPYChangeData.m in Sources */ = {isa = PBXBuildFile; fileRef = 437449C716CCEA67004285C4 /* SPYChangeData.m */; };
+		4393EDE116E5C61200E20CD6 /* SPYNavyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4393EDE016E5C61200E20CD6 /* SPYNavyView.m */; };
+		43958643166DD108002FFB66 /* SPYBarkleySound.m in Sources */ = {isa = PBXBuildFile; fileRef = 43958642166DD108002FFB66 /* SPYBarkleySound.m */; };
+		43958647166DD7E5002FFB66 /* SPYSantaBarbaraPassage.m in Sources */ = {isa = PBXBuildFile; fileRef = 43958646166DD7E5002FFB66 /* SPYSantaBarbaraPassage.m */; };
+		4395864A166DD971002FFB66 /* SPYGulfOfPanama.m in Sources */ = {isa = PBXBuildFile; fileRef = 43958649166DD971002FFB66 /* SPYGulfOfPanama.m */; };
+		4395864D166DDA88002FFB66 /* SPYLimaBay.m in Sources */ = {isa = PBXBuildFile; fileRef = 4395864C166DDA88002FFB66 /* SPYLimaBay.m */; };
+		43958650166E03F2002FFB66 /* SPYHudsonStrait.m in Sources */ = {isa = PBXBuildFile; fileRef = 4395864F166E03F2002FFB66 /* SPYHudsonStrait.m */; };
+		43958653166E0529002FFB66 /* SPYGulfOfStLawrence.m in Sources */ = {isa = PBXBuildFile; fileRef = 43958652166E0529002FFB66 /* SPYGulfOfStLawrence.m */; };
+		43958656166E064A002FFB66 /* SPYLongIslandSound.m in Sources */ = {isa = PBXBuildFile; fileRef = 43958655166E064A002FFB66 /* SPYLongIslandSound.m */; };
+		43958659166E07B0002FFB66 /* SPYCaribbeanSea.m in Sources */ = {isa = PBXBuildFile; fileRef = 43958658166E07B0002FFB66 /* SPYCaribbeanSea.m */; };
+		4395865C166E0906002FFB66 /* SPYBaiaSantos.m in Sources */ = {isa = PBXBuildFile; fileRef = 4395865B166E0905002FFB66 /* SPYBaiaSantos.m */; };
+		4395865F166E0A68002FFB66 /* SPYRioDePlata.m in Sources */ = {isa = PBXBuildFile; fileRef = 4395865E166E0A67002FFB66 /* SPYRioDePlata.m */; };
+		43A343F8165E058B006E2229 /* SPYAlaska.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A343F7165E058B006E2229 /* SPYAlaska.m */; };
+		43A343FC165E0632006E2229 /* SPYNorthernCanada.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A343FB165E0632006E2229 /* SPYNorthernCanada.m */; };
+		43A343FF165E068F006E2229 /* SPYGreenland.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A343FE165E068F006E2229 /* SPYGreenland.m */; };
+		43A34402165E079A006E2229 /* SPYWesternCanada.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A34401165E079A006E2229 /* SPYWesternCanada.m */; };
+		43A34405165E0838006E2229 /* SPYEasternCanada.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A34404165E0838006E2229 /* SPYEasternCanada.m */; };
+		43A34408165E08B2006E2229 /* SPYWesternUSA.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A34407165E08B2006E2229 /* SPYWesternUSA.m */; };
+		43A3440B165E094F006E2229 /* SPYMidwestUSA.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A3440A165E094F006E2229 /* SPYMidwestUSA.m */; };
+		43A3440E165E09D1006E2229 /* SPYEasternUSA.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A3440D165E09D1006E2229 /* SPYEasternUSA.m */; };
+		43A34411165E0A57006E2229 /* SPYCentralAmerica.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A34410165E0A57006E2229 /* SPYCentralAmerica.m */; };
+		43A34414165E0AEA006E2229 /* SPYVenezuela.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A34413165E0AEA006E2229 /* SPYVenezuela.m */; };
+		43A34417165E0B69006E2229 /* SPYPeru.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A34416165E0B69006E2229 /* SPYPeru.m */; };
+		43A3441A165E0BDB006E2229 /* SPYBrazil.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A34419165E0BDB006E2229 /* SPYBrazil.m */; };
+		43A3441D165E0C50006E2229 /* SPYArgentina.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A3441C165E0C50006E2229 /* SPYArgentina.m */; };
+		43A3EDA2171D484000D062A0 /* SPYMatchControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A3EDA1171D484000D062A0 /* SPYMatchControl.m */; };
+		43A7DDD91669ED9000B1A42B /* SPYNameTextLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A7DDD81669ED9000B1A42B /* SPYNameTextLabel.m */; };
+		43B4BD2A1664CDE8003D723D /* SPYRootViewControllerIPadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B4BD281664CDE8003D723D /* SPYRootViewControllerIPadViewController.m */; };
+		43B4BD2B1664CDE8003D723D /* SPYRootViewControllerIPadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43B4BD291664CDE8003D723D /* SPYRootViewControllerIPadViewController.xib */; };
+		43B9C3B717165A1600A99852 /* ResourceCards.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B9C3B617165A1600A99852 /* ResourceCards.m */; };
+		43B9CA991704342000021C3C /* SPYLoadGameData.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B9CA981704342000021C3C /* SPYLoadGameData.m */; };
+		43BE9E8E171FEAE90059D71E /* SPYMatchesPickerCllctnVwCntrllr.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BE9E8D171FEAE90059D71E /* SPYMatchesPickerCllctnVwCntrllr.m */; };
+		43BE9E91171FEC140059D71E /* SPYMatchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43BE9E90171FEC130059D71E /* SPYMatchViewController.m */; };
+		43C72897165642B600712C01 /* SPYCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C72896165642B600712C01 /* SPYCollectionViewController.m */; };
+		43CE1C2016C35939008D0CDE /* SPYGlobalConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 43CE1C1F16C35939008D0CDE /* SPYGlobalConstants.m */; };
+		43D1C23316EBD37300738925 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43D1C23216EBD37300738925 /* QuartzCore.framework */; };
+		43D41645172BCA3000301363 /* Match.m in Sources */ = {isa = PBXBuildFile; fileRef = 43D41644172BCA3000301363 /* Match.m */; };
+		43DB4BBC167729E600BA0152 /* SPYGulfOfGuinea.m in Sources */ = {isa = PBXBuildFile; fileRef = 43DB4BBB167729E400BA0152 /* SPYGulfOfGuinea.m */; };
+		43DB4BC016772AEB00BA0152 /* SPYCapeOfGoodHope.m in Sources */ = {isa = PBXBuildFile; fileRef = 43DB4BBF16772AE900BA0152 /* SPYCapeOfGoodHope.m */; };
+		43DB4BC316772C8F00BA0152 /* SPYStraitsOfMalacca.m in Sources */ = {isa = PBXBuildFile; fileRef = 43DB4BC216772C8C00BA0152 /* SPYStraitsOfMalacca.m */; };
+		43DB4BC61677497200BA0152 /* SPYArabiaSea.m in Sources */ = {isa = PBXBuildFile; fileRef = 43DB4BC51677496E00BA0152 /* SPYArabiaSea.m */; };
+		43DB4BC916774C3300BA0152 /* SPYSeaOfOkhotsk.m in Sources */ = {isa = PBXBuildFile; fileRef = 43DB4BC816774C2F00BA0152 /* SPYSeaOfOkhotsk.m */; };
+		43DB4BCC16774D1200BA0152 /* SPYTokyoBay.m in Sources */ = {isa = PBXBuildFile; fileRef = 43DB4BCB16774D0D00BA0152 /* SPYTokyoBay.m */; };
+		43DB4BCF16774DEF00BA0152 /* SPYSeaOfJapan.m in Sources */ = {isa = PBXBuildFile; fileRef = 43DB4BCE16774DEA00BA0152 /* SPYSeaOfJapan.m */; };
+		43E206A6165F66C400742328 /* SPYSahara.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E206A5165F66C400742328 /* SPYSahara.m */; };
+		43E206AA165F674600742328 /* SPYEgypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E206A9165F674600742328 /* SPYEgypt.m */; };
+		43E206AD165F680400742328 /* SPYNigeria.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E206AC165F680400742328 /* SPYNigeria.m */; };
+		43E206B0165F689800742328 /* SPYMozambique.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E206AF165F689800742328 /* SPYMozambique.m */; };
+		43E206B3165F690F00742328 /* SPYZaire.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E206B2165F690F00742328 /* SPYZaire.m */; };
+		43E206B6165F69A900742328 /* SPYSouthAfrica.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E206B5165F69A900742328 /* SPYSouthAfrica.m */; };
+		43E206B9165F6C9A00742328 /* SPYSiberia.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E206B8165F6C9A00742328 /* SPYSiberia.m */; };
+		43E206BC165F6D5200742328 /* SPYYakutsk.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E206BB165F6D5200742328 /* SPYYakutsk.m */; };
+		43E206BF165F6E2C00742328 /* SPYRussia.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E206BE165F6E2C00742328 /* SPYRussia.m */; };
+		43E206C2165F6EE500742328 /* SPYKazakh.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E206C1165F6EE400742328 /* SPYKazakh.m */; };
+		43E206C5165F6F7A00742328 /* SPYBuryatsk.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E206C4165F6F7900742328 /* SPYBuryatsk.m */; };
+		43E206C8165F700B00742328 /* SPYJapan.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E206C7165F700B00742328 /* SPYJapan.m */; };
+		43E9EBA716E85B3C002D6C2E /* SPYFleetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E9EBA616E85B3C002D6C2E /* SPYFleetViewController.m */; };
+		43E9EBAD16E85CFB002D6C2E /* SPYGamePieceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E9EBAC16E85CFB002D6C2E /* SPYGamePieceViewController.m */; };
+		43ED650E16B1112E00C0C9B6 /* SPYBrigadeViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 43ED650D16B1112E00C0C9B6 /* SPYBrigadeViewLayout.m */; };
+		43F8155F16537C4F00D86CBB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F8155E16537C4F00D86CBB /* UIKit.framework */; };
+		43F8156116537C4F00D86CBB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F8156016537C4F00D86CBB /* Foundation.framework */; };
+		43F8156316537C4F00D86CBB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F8156216537C4F00D86CBB /* CoreGraphics.framework */; };
+		43F8156516537C4F00D86CBB /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F8156416537C4F00D86CBB /* CoreData.framework */; };
+		43F8156B16537C4F00D86CBB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 43F8156916537C4F00D86CBB /* InfoPlist.strings */; };
+		43F8156D16537C4F00D86CBB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F8156C16537C4F00D86CBB /* main.m */; };
+		43F8157116537C4F00D86CBB /* SPYAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F8157016537C4F00D86CBB /* SPYAppDelegate.m */; };
+		43F8157316537C4F00D86CBB /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 43F8157216537C4F00D86CBB /* Default.png */; };
+		43F8157516537C4F00D86CBB /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43F8157416537C4F00D86CBB /* Default@2x.png */; };
+		43F8157716537C4F00D86CBB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43F8157616537C4F00D86CBB /* Default-568h@2x.png */; };
+		43F8157A16537C4F00D86CBB /* Spies-vs-Armies.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 43F8157816537C4F00D86CBB /* Spies-vs-Armies.xcdatamodeld */; };
+		43F8158216537C5000D86CBB /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F8158116537C5000D86CBB /* SenTestingKit.framework */; };
+		43F8158316537C5000D86CBB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F8155E16537C4F00D86CBB /* UIKit.framework */; };
+		43F8158416537C5000D86CBB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F8156016537C4F00D86CBB /* Foundation.framework */; };
+		43F8158516537C5000D86CBB /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F8156416537C4F00D86CBB /* CoreData.framework */; };
+		43F8158D16537C5000D86CBB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 43F8158B16537C5000D86CBB /* InfoPlist.strings */; };
+		43F8159016537C5000D86CBB /* Supremacy__The_Game_of_the_SuperpowersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F8158F16537C5000D86CBB /* Supremacy__The_Game_of_the_SuperpowersTests.m */; };
+		43F8159D16537FE200D86CBB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F8159C16537FE200D86CBB /* CoreLocation.framework */; };
+		43FFC3BC16991D130091521F /* SPYArmyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FFC3BB16991D130091521F /* SPYArmyView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		43F8158616537C5000D86CBB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 43F8155116537C4F00D86CBB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 43F8155916537C4F00D86CBB;
+			remoteInfo = "Supremacy: The Game of the Superpowers";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		430978BC1659D8CF002CDF38 /* SPYGameBoardIPadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SPYGameBoardIPadViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		430978BD1659D8CF002CDF38 /* SPYGameBoardIPadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SPYGameBoardIPadViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		430978BE1659D8CF002CDF38 /* SPYGameBoardIPadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPYGameBoardIPadViewController.xib; sourceTree = "<group>"; };
+		4312B60D167075D100680D31 /* SPYNorthSea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYNorthSea.h; sourceTree = "<group>"; };
+		4312B60E167075D100680D31 /* SPYNorthSea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYNorthSea.m; sourceTree = "<group>"; };
+		4312B611167076FE00680D31 /* SPYBalticSea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYBalticSea.h; sourceTree = "<group>"; };
+		4312B612167076FE00680D31 /* SPYBalticSea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYBalticSea.m; sourceTree = "<group>"; };
+		4312B614167077C200680D31 /* SPYBarentsSea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYBarentsSea.h; sourceTree = "<group>"; };
+		4312B615167077C200680D31 /* SPYBarentsSea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYBarentsSea.m; sourceTree = "<group>"; };
+		4312B6171670789600680D31 /* SPYBayOfBiscay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYBayOfBiscay.h; sourceTree = "<group>"; };
+		4312B6181670789600680D31 /* SPYBayOfBiscay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYBayOfBiscay.m; sourceTree = "<group>"; };
+		4312B61A1670796C00680D31 /* SPYMediterraneanSea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYMediterraneanSea.h; sourceTree = "<group>"; };
+		4312B61B1670796C00680D31 /* SPYMediterraneanSea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYMediterraneanSea.m; sourceTree = "<group>"; };
+		4312B61D16707A5000680D31 /* SPYSeaOfCrete.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYSeaOfCrete.h; sourceTree = "<group>"; };
+		4312B61E16707A5000680D31 /* SPYSeaOfCrete.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYSeaOfCrete.m; sourceTree = "<group>"; };
+		4312B62016707B4100680D31 /* SPYBlackSea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYBlackSea.h; sourceTree = "<group>"; };
+		4312B62116707B4100680D31 /* SPYBlackSea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYBlackSea.m; sourceTree = "<group>"; };
+		4312B62316707C0700680D31 /* SPYRedSea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYRedSea.h; sourceTree = "<group>"; };
+		4312B62416707C0800680D31 /* SPYRedSea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYRedSea.m; sourceTree = "<group>"; };
+		43156AA0165A065400DCC26C /* SPYWorldMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYWorldMapView.h; sourceTree = "<group>"; };
+		43156AA1165A065400DCC26C /* SPYWorldMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYWorldMapView.m; sourceTree = "<group>"; };
+		431C54C116F1B21B0065C7E2 /* yellowCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellowCircle.png; sourceTree = "<group>"; };
+		431C54C216F1B21B0065C7E2 /* yellowCircle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yellowCircle@2x.png"; sourceTree = "<group>"; };
+		431DCFC11660B8FA00C8BBED /* SPYTurkey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYTurkey.h; sourceTree = "<group>"; };
+		431DCFC21660B8FA00C8BBED /* SPYTurkey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYTurkey.m; sourceTree = "<group>"; };
+		431DCFC51660B97D00C8BBED /* SPYMiddleEast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYMiddleEast.h; sourceTree = "<group>"; };
+		431DCFC61660B97D00C8BBED /* SPYMiddleEast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYMiddleEast.m; sourceTree = "<group>"; };
+		431DCFC81660B9FE00C8BBED /* SPYArabia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYArabia.h; sourceTree = "<group>"; };
+		431DCFC91660B9FE00C8BBED /* SPYArabia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SPYArabia.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		431DCFCB1660BA7300C8BBED /* SPYIraq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYIraq.h; sourceTree = "<group>"; };
+		431DCFCC1660BA7300C8BBED /* SPYIraq.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYIraq.m; sourceTree = "<group>"; };
+		431DCFCE1660BB0E00C8BBED /* SPYIran.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYIran.h; sourceTree = "<group>"; };
+		431DCFCF1660BB0E00C8BBED /* SPYIran.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYIran.m; sourceTree = "<group>"; };
+		431DCFD11660BB9B00C8BBED /* SPYPakistan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYPakistan.h; sourceTree = "<group>"; };
+		431DCFD21660BB9B00C8BBED /* SPYPakistan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYPakistan.m; sourceTree = "<group>"; };
+		431DCFD41660BC3500C8BBED /* SPYTibet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYTibet.h; sourceTree = "<group>"; };
+		431DCFD51660BC3500C8BBED /* SPYTibet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYTibet.m; sourceTree = "<group>"; };
+		431DCFD71660BCD600C8BBED /* SPYMongolia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYMongolia.h; sourceTree = "<group>"; };
+		431DCFD81660BCD600C8BBED /* SPYMongolia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYMongolia.m; sourceTree = "<group>"; };
+		431DCFDA1660BD5300C8BBED /* SPYManchuria.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYManchuria.h; sourceTree = "<group>"; };
+		431DCFDB1660BD5400C8BBED /* SPYManchuria.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYManchuria.m; sourceTree = "<group>"; };
+		431DCFDD1660BDF700C8BBED /* SPYShantung.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYShantung.h; sourceTree = "<group>"; };
+		431DCFDE1660BDF700C8BBED /* SPYShantung.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYShantung.m; sourceTree = "<group>"; };
+		431DCFE01660BE8D00C8BBED /* SPYNanling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYNanling.h; sourceTree = "<group>"; };
+		431DCFE11660BE8D00C8BBED /* SPYNanling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYNanling.m; sourceTree = "<group>"; };
+		431DCFE31660C1CF00C8BBED /* SPYIndia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYIndia.h; sourceTree = "<group>"; };
+		431DCFE41660C1CF00C8BBED /* SPYIndia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYIndia.m; sourceTree = "<group>"; };
+		431DCFE61660C26400C8BBED /* SPYBurma.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYBurma.h; sourceTree = "<group>"; };
+		431DCFE71660C26400C8BBED /* SPYBurma.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYBurma.m; sourceTree = "<group>"; };
+		431DCFE91660C30000C8BBED /* SPYIndoChina.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYIndoChina.h; sourceTree = "<group>"; };
+		431DCFEA1660C30000C8BBED /* SPYIndoChina.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYIndoChina.m; sourceTree = "<group>"; };
+		431DCFEC1660C38500C8BBED /* SPYIndonesia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYIndonesia.h; sourceTree = "<group>"; };
+		431DCFED1660C38500C8BBED /* SPYIndonesia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYIndonesia.m; sourceTree = "<group>"; };
+		431DCFEF1660C43400C8BBED /* SPYWesternAustralia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYWesternAustralia.h; sourceTree = "<group>"; };
+		431DCFF01660C43400C8BBED /* SPYWesternAustralia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYWesternAustralia.m; sourceTree = "<group>"; };
+		431DCFF21660C4D100C8BBED /* SPYEasternAustralia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYEasternAustralia.h; sourceTree = "<group>"; };
+		431DCFF31660C4D100C8BBED /* SPYEasternAustralia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYEasternAustralia.m; sourceTree = "<group>"; };
+		431DCFF51660C62500C8BBED /* SPYNewZealand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYNewZealand.h; sourceTree = "<group>"; };
+		431DCFF61660C62500C8BBED /* SPYNewZealand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYNewZealand.m; sourceTree = "<group>"; };
+		432275DF16F04E8800738E36 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		4340D87F169D5EB100E3CA78 /* SPYBrigadeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYBrigadeViewController.h; sourceTree = "<group>"; };
+		4340D880169D5EB100E3CA78 /* SPYBrigadeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYBrigadeViewController.m; sourceTree = "<group>"; };
+		4344FCE216648E7200AD3897 /* SPYLoadStartData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPYLoadStartData.h; path = "Supremacy: The Game of the Superpowers/SPYLoadStartData.h"; sourceTree = "<group>"; };
+		4344FCE316648E7200AD3897 /* SPYLoadStartData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPYLoadStartData.m; path = "Supremacy: The Game of the Superpowers/SPYLoadStartData.m"; sourceTree = "<group>"; };
+		434A742616A13953005198CF /* SPYTemplateLayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYTemplateLayerView.h; sourceTree = "<group>"; };
+		434A742716A13953005198CF /* SPYTemplateLayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYTemplateLayerView.m; sourceTree = "<group>"; };
+		434FE83516C73DC700A69997 /* SPYBattleDrillViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYBattleDrillViewController.h; sourceTree = "<group>"; };
+		434FE83616C73DC700A69997 /* SPYBattleDrillViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYBattleDrillViewController.m; sourceTree = "<group>"; };
+		434FE83916C73E5800A69997 /* SPYBattleDrillBG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYBattleDrillBG.h; sourceTree = "<group>"; };
+		434FE83A16C73E5800A69997 /* SPYBattleDrillBG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYBattleDrillBG.m; sourceTree = "<group>"; };
+		4355E12F16C798CA00187DC9 /* SPYAttackButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYAttackButton.h; sourceTree = "<group>"; };
+		4355E13016C798CA00187DC9 /* SPYAttackButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYAttackButton.m; sourceTree = "<group>"; };
+		4355E13316C798FB00187DC9 /* SPYWithdrawButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYWithdrawButton.h; sourceTree = "<group>"; };
+		4355E13416C798FB00187DC9 /* SPYWithdrawButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYWithdrawButton.m; sourceTree = "<group>"; };
+		435B271B1738D4EB00AD3895 /* Spies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spies.h; sourceTree = "<group>"; };
+		435B271C1738D4EB00AD3895 /* Spies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spies.m; sourceTree = "<group>"; };
+		435B271E1738D4EB00AD3895 /* Territories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Territories.h; sourceTree = "<group>"; };
+		435B271F1738D4EB00AD3895 /* Territories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Territories.m; sourceTree = "<group>"; };
+		435C3190165B70A20057B48D /* SPYTerritoryTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYTerritoryTemplate.h; sourceTree = "<group>"; };
+		435C3191165B70A20057B48D /* SPYTerritoryTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYTerritoryTemplate.m; sourceTree = "<group>"; };
+		435C3193165B70D20057B48D /* SPYScandanavia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYScandanavia.h; sourceTree = "<group>"; };
+		435C3194165B70D20057B48D /* SPYScandanavia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYScandanavia.m; sourceTree = "<group>"; };
+		435C3196165B71350057B48D /* SPYKola.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYKola.h; sourceTree = "<group>"; };
+		435C3197165B71350057B48D /* SPYKola.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYKola.m; sourceTree = "<group>"; };
+		436DE8F2171561E200F33403 /* TerritoriesBorderingJoin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TerritoriesBorderingJoin.h; sourceTree = "<group>"; };
+		436DE8F3171561E200F33403 /* TerritoriesBorderingJoin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TerritoriesBorderingJoin.m; sourceTree = "<group>"; };
+		436DE8F5171561E200F33403 /* Nations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Nations.h; sourceTree = "<group>"; };
+		436DE8F6171561E200F33403 /* Nations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Nations.m; sourceTree = "<group>"; };
+		436DE8F8171561E200F33403 /* Players.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Players.h; sourceTree = "<group>"; };
+		436DE8F9171561E200F33403 /* Players.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Players.m; sourceTree = "<group>"; };
+		436DE8FE171561E200F33403 /* History.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = History.h; sourceTree = "<group>"; };
+		436DE8FF171561E200F33403 /* History.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = History.m; sourceTree = "<group>"; };
+		436DE9041715632A00F33403 /* SPYMatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYMatch.h; sourceTree = "<group>"; };
+		436DE9051715632A00F33403 /* SPYMatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYMatch.m; sourceTree = "<group>"; };
+		43706117165CA436004A003E /* SPYBritishIsles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYBritishIsles.h; sourceTree = "<group>"; };
+		43706118165CA436004A003E /* SPYBritishIsles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYBritishIsles.m; sourceTree = "<group>"; };
+		4370611B165CA6B7004A003E /* SPYIberia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYIberia.h; sourceTree = "<group>"; };
+		4370611C165CA6B7004A003E /* SPYIberia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYIberia.m; sourceTree = "<group>"; };
+		4370611E165CA7A0004A003E /* SPYWesternEurope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYWesternEurope.h; sourceTree = "<group>"; };
+		4370611F165CA7A0004A003E /* SPYWesternEurope.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYWesternEurope.m; sourceTree = "<group>"; };
+		43706121165CA8F3004A003E /* SPYEasternEurope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYEasternEurope.h; sourceTree = "<group>"; };
+		43706122165CA8F3004A003E /* SPYEasternEurope.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYEasternEurope.m; sourceTree = "<group>"; };
+		43706124165CAF4C004A003E /* SPYPoland.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYPoland.h; sourceTree = "<group>"; };
+		43706125165CAF4C004A003E /* SPYPoland.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYPoland.m; sourceTree = "<group>"; };
+		43706127165CAFCF004A003E /* SPYGreece.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYGreece.h; sourceTree = "<group>"; };
+		43706128165CAFCF004A003E /* SPYGreece.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYGreece.m; sourceTree = "<group>"; };
+		4370612A165CB049004A003E /* SPYRomania.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYRomania.h; sourceTree = "<group>"; };
+		4370612B165CB049004A003E /* SPYRomania.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYRomania.m; sourceTree = "<group>"; };
+		43739B021678631D00C96DBB /* SPYSouthChinaSea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYSouthChinaSea.h; sourceTree = "<group>"; };
+		43739B031678631D00C96DBB /* SPYSouthChinaSea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYSouthChinaSea.m; sourceTree = "<group>"; };
+		43739B061678641100C96DBB /* SPYJavaSea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYJavaSea.h; sourceTree = "<group>"; };
+		43739B071678641100C96DBB /* SPYJavaSea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYJavaSea.m; sourceTree = "<group>"; };
+		43739B09167864CD00C96DBB /* SPYBayOfBengal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYBayOfBengal.h; sourceTree = "<group>"; };
+		43739B0A167864CE00C96DBB /* SPYBayOfBengal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYBayOfBengal.m; sourceTree = "<group>"; };
+		43739B0C167865F400C96DBB /* SPYTimorSea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYTimorSea.h; sourceTree = "<group>"; };
+		43739B0D167865F400C96DBB /* SPYTimorSea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYTimorSea.m; sourceTree = "<group>"; };
+		43739B0F167866BB00C96DBB /* SPYSharkBay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYSharkBay.h; sourceTree = "<group>"; };
+		43739B10167866BB00C96DBB /* SPYSharkBay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYSharkBay.m; sourceTree = "<group>"; };
+		43739B121678676D00C96DBB /* SPYTasmanSea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYTasmanSea.h; sourceTree = "<group>"; };
+		43739B131678676D00C96DBB /* SPYTasmanSea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYTasmanSea.m; sourceTree = "<group>"; };
+		437449C616CCEA67004285C4 /* SPYChangeData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYChangeData.h; sourceTree = "<group>"; };
+		437449C716CCEA67004285C4 /* SPYChangeData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYChangeData.m; sourceTree = "<group>"; };
+		4393EDDF16E5C61200E20CD6 /* SPYNavyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYNavyView.h; sourceTree = "<group>"; };
+		4393EDE016E5C61200E20CD6 /* SPYNavyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYNavyView.m; sourceTree = "<group>"; };
+		43958641166DD108002FFB66 /* SPYBarkleySound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYBarkleySound.h; sourceTree = "<group>"; };
+		43958642166DD108002FFB66 /* SPYBarkleySound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYBarkleySound.m; sourceTree = "<group>"; };
+		43958645166DD7E5002FFB66 /* SPYSantaBarbaraPassage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYSantaBarbaraPassage.h; sourceTree = "<group>"; };
+		43958646166DD7E5002FFB66 /* SPYSantaBarbaraPassage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYSantaBarbaraPassage.m; sourceTree = "<group>"; };
+		43958648166DD971002FFB66 /* SPYGulfOfPanama.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYGulfOfPanama.h; sourceTree = "<group>"; };
+		43958649166DD971002FFB66 /* SPYGulfOfPanama.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYGulfOfPanama.m; sourceTree = "<group>"; };
+		4395864B166DDA88002FFB66 /* SPYLimaBay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYLimaBay.h; sourceTree = "<group>"; };
+		4395864C166DDA88002FFB66 /* SPYLimaBay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYLimaBay.m; sourceTree = "<group>"; };
+		4395864E166E03F2002FFB66 /* SPYHudsonStrait.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYHudsonStrait.h; sourceTree = "<group>"; };
+		4395864F166E03F2002FFB66 /* SPYHudsonStrait.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYHudsonStrait.m; sourceTree = "<group>"; };
+		43958651166E0529002FFB66 /* SPYGulfOfStLawrence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYGulfOfStLawrence.h; sourceTree = "<group>"; };
+		43958652166E0529002FFB66 /* SPYGulfOfStLawrence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYGulfOfStLawrence.m; sourceTree = "<group>"; };
+		43958654166E064A002FFB66 /* SPYLongIslandSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYLongIslandSound.h; sourceTree = "<group>"; };
+		43958655166E064A002FFB66 /* SPYLongIslandSound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYLongIslandSound.m; sourceTree = "<group>"; };
+		43958657166E07B0002FFB66 /* SPYCaribbeanSea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYCaribbeanSea.h; sourceTree = "<group>"; };
+		43958658166E07B0002FFB66 /* SPYCaribbeanSea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYCaribbeanSea.m; sourceTree = "<group>"; };
+		4395865A166E0905002FFB66 /* SPYBaiaSantos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYBaiaSantos.h; sourceTree = "<group>"; };
+		4395865B166E0905002FFB66 /* SPYBaiaSantos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYBaiaSantos.m; sourceTree = "<group>"; };
+		4395865D166E0A67002FFB66 /* SPYRioDePlata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYRioDePlata.h; sourceTree = "<group>"; };
+		4395865E166E0A67002FFB66 /* SPYRioDePlata.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYRioDePlata.m; sourceTree = "<group>"; };
+		43A343F6165E058B006E2229 /* SPYAlaska.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYAlaska.h; sourceTree = "<group>"; };
+		43A343F7165E058B006E2229 /* SPYAlaska.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SPYAlaska.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		43A343FA165E0632006E2229 /* SPYNorthernCanada.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYNorthernCanada.h; sourceTree = "<group>"; };
+		43A343FB165E0632006E2229 /* SPYNorthernCanada.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYNorthernCanada.m; sourceTree = "<group>"; };
+		43A343FD165E068F006E2229 /* SPYGreenland.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYGreenland.h; sourceTree = "<group>"; };
+		43A343FE165E068F006E2229 /* SPYGreenland.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYGreenland.m; sourceTree = "<group>"; };
+		43A34400165E079A006E2229 /* SPYWesternCanada.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYWesternCanada.h; sourceTree = "<group>"; };
+		43A34401165E079A006E2229 /* SPYWesternCanada.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYWesternCanada.m; sourceTree = "<group>"; };
+		43A34403165E0838006E2229 /* SPYEasternCanada.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYEasternCanada.h; sourceTree = "<group>"; };
+		43A34404165E0838006E2229 /* SPYEasternCanada.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYEasternCanada.m; sourceTree = "<group>"; };
+		43A34406165E08B2006E2229 /* SPYWesternUSA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYWesternUSA.h; sourceTree = "<group>"; };
+		43A34407165E08B2006E2229 /* SPYWesternUSA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYWesternUSA.m; sourceTree = "<group>"; };
+		43A34409165E094F006E2229 /* SPYMidwestUSA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYMidwestUSA.h; sourceTree = "<group>"; };
+		43A3440A165E094F006E2229 /* SPYMidwestUSA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYMidwestUSA.m; sourceTree = "<group>"; };
+		43A3440C165E09D1006E2229 /* SPYEasternUSA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYEasternUSA.h; sourceTree = "<group>"; };
+		43A3440D165E09D1006E2229 /* SPYEasternUSA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYEasternUSA.m; sourceTree = "<group>"; };
+		43A3440F165E0A57006E2229 /* SPYCentralAmerica.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYCentralAmerica.h; sourceTree = "<group>"; };
+		43A34410165E0A57006E2229 /* SPYCentralAmerica.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYCentralAmerica.m; sourceTree = "<group>"; };
+		43A34412165E0AEA006E2229 /* SPYVenezuela.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYVenezuela.h; sourceTree = "<group>"; };
+		43A34413165E0AEA006E2229 /* SPYVenezuela.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYVenezuela.m; sourceTree = "<group>"; };
+		43A34415165E0B69006E2229 /* SPYPeru.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYPeru.h; sourceTree = "<group>"; };
+		43A34416165E0B69006E2229 /* SPYPeru.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYPeru.m; sourceTree = "<group>"; };
+		43A34418165E0BDA006E2229 /* SPYBrazil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYBrazil.h; sourceTree = "<group>"; };
+		43A34419165E0BDB006E2229 /* SPYBrazil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYBrazil.m; sourceTree = "<group>"; };
+		43A3441B165E0C50006E2229 /* SPYArgentina.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYArgentina.h; sourceTree = "<group>"; };
+		43A3441C165E0C50006E2229 /* SPYArgentina.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SPYArgentina.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		43A3EDA0171D484000D062A0 /* SPYMatchControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYMatchControl.h; sourceTree = "<group>"; };
+		43A3EDA1171D484000D062A0 /* SPYMatchControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYMatchControl.m; sourceTree = "<group>"; };
+		43A7DDD71669ED9000B1A42B /* SPYNameTextLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYNameTextLabel.h; sourceTree = "<group>"; };
+		43A7DDD81669ED9000B1A42B /* SPYNameTextLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYNameTextLabel.m; sourceTree = "<group>"; };
+		43B4BD271664CDE8003D723D /* SPYRootViewControllerIPadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYRootViewControllerIPadViewController.h; sourceTree = "<group>"; };
+		43B4BD281664CDE8003D723D /* SPYRootViewControllerIPadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SPYRootViewControllerIPadViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		43B4BD291664CDE8003D723D /* SPYRootViewControllerIPadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPYRootViewControllerIPadViewController.xib; sourceTree = "<group>"; };
+		43B9C3B517165A1600A99852 /* ResourceCards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResourceCards.h; path = ../ResourceCards.h; sourceTree = "<group>"; };
+		43B9C3B617165A1600A99852 /* ResourceCards.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ResourceCards.m; path = ../ResourceCards.m; sourceTree = "<group>"; };
+		43B9CA971704342000021C3C /* SPYLoadGameData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYLoadGameData.h; sourceTree = "<group>"; };
+		43B9CA981704342000021C3C /* SPYLoadGameData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYLoadGameData.m; sourceTree = "<group>"; };
+		43BE9E8C171FEAE90059D71E /* SPYMatchesPickerCllctnVwCntrllr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYMatchesPickerCllctnVwCntrllr.h; sourceTree = "<group>"; };
+		43BE9E8D171FEAE90059D71E /* SPYMatchesPickerCllctnVwCntrllr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYMatchesPickerCllctnVwCntrllr.m; sourceTree = "<group>"; };
+		43BE9E8F171FEC130059D71E /* SPYMatchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYMatchViewController.h; sourceTree = "<group>"; };
+		43BE9E90171FEC130059D71E /* SPYMatchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYMatchViewController.m; sourceTree = "<group>"; };
+		43C72895165642B600712C01 /* SPYCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYCollectionViewController.h; sourceTree = "<group>"; };
+		43C72896165642B600712C01 /* SPYCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYCollectionViewController.m; sourceTree = "<group>"; };
+		43CE1C1E16C35939008D0CDE /* SPYGlobalConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYGlobalConstants.h; sourceTree = "<group>"; };
+		43CE1C1F16C35939008D0CDE /* SPYGlobalConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYGlobalConstants.m; sourceTree = "<group>"; };
+		43D1C23216EBD37300738925 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		43D41643172BCA3000301363 /* Match.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Match.h; sourceTree = "<group>"; };
+		43D41644172BCA3000301363 /* Match.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Match.m; sourceTree = "<group>"; };
+		43DB4BBA167729E200BA0152 /* SPYGulfOfGuinea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYGulfOfGuinea.h; sourceTree = "<group>"; };
+		43DB4BBB167729E400BA0152 /* SPYGulfOfGuinea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYGulfOfGuinea.m; sourceTree = "<group>"; };
+		43DB4BBE16772AE700BA0152 /* SPYCapeOfGoodHope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYCapeOfGoodHope.h; sourceTree = "<group>"; };
+		43DB4BBF16772AE900BA0152 /* SPYCapeOfGoodHope.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYCapeOfGoodHope.m; sourceTree = "<group>"; };
+		43DB4BC116772C8A00BA0152 /* SPYStraitsOfMalacca.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYStraitsOfMalacca.h; sourceTree = "<group>"; };
+		43DB4BC216772C8C00BA0152 /* SPYStraitsOfMalacca.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYStraitsOfMalacca.m; sourceTree = "<group>"; };
+		43DB4BC41677496B00BA0152 /* SPYArabiaSea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYArabiaSea.h; sourceTree = "<group>"; };
+		43DB4BC51677496E00BA0152 /* SPYArabiaSea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SPYArabiaSea.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		43DB4BC716774C2C00BA0152 /* SPYSeaOfOkhotsk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYSeaOfOkhotsk.h; sourceTree = "<group>"; };
+		43DB4BC816774C2F00BA0152 /* SPYSeaOfOkhotsk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYSeaOfOkhotsk.m; sourceTree = "<group>"; };
+		43DB4BCA16774D0900BA0152 /* SPYTokyoBay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYTokyoBay.h; sourceTree = "<group>"; };
+		43DB4BCB16774D0D00BA0152 /* SPYTokyoBay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYTokyoBay.m; sourceTree = "<group>"; };
+		43DB4BCD16774DE600BA0152 /* SPYSeaOfJapan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYSeaOfJapan.h; sourceTree = "<group>"; };
+		43DB4BCE16774DEA00BA0152 /* SPYSeaOfJapan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYSeaOfJapan.m; sourceTree = "<group>"; };
+		43E206A4165F66C400742328 /* SPYSahara.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYSahara.h; sourceTree = "<group>"; };
+		43E206A5165F66C400742328 /* SPYSahara.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYSahara.m; sourceTree = "<group>"; };
+		43E206A8165F674600742328 /* SPYEgypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYEgypt.h; sourceTree = "<group>"; };
+		43E206A9165F674600742328 /* SPYEgypt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYEgypt.m; sourceTree = "<group>"; };
+		43E206AB165F680400742328 /* SPYNigeria.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYNigeria.h; sourceTree = "<group>"; };
+		43E206AC165F680400742328 /* SPYNigeria.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYNigeria.m; sourceTree = "<group>"; };
+		43E206AE165F689800742328 /* SPYMozambique.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYMozambique.h; sourceTree = "<group>"; };
+		43E206AF165F689800742328 /* SPYMozambique.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYMozambique.m; sourceTree = "<group>"; };
+		43E206B1165F690F00742328 /* SPYZaire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYZaire.h; sourceTree = "<group>"; };
+		43E206B2165F690F00742328 /* SPYZaire.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYZaire.m; sourceTree = "<group>"; };
+		43E206B4165F69A900742328 /* SPYSouthAfrica.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYSouthAfrica.h; sourceTree = "<group>"; };
+		43E206B5165F69A900742328 /* SPYSouthAfrica.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYSouthAfrica.m; sourceTree = "<group>"; };
+		43E206B7165F6C9A00742328 /* SPYSiberia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYSiberia.h; sourceTree = "<group>"; };
+		43E206B8165F6C9A00742328 /* SPYSiberia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYSiberia.m; sourceTree = "<group>"; };
+		43E206BA165F6D5200742328 /* SPYYakutsk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYYakutsk.h; sourceTree = "<group>"; };
+		43E206BB165F6D5200742328 /* SPYYakutsk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYYakutsk.m; sourceTree = "<group>"; };
+		43E206BD165F6E2C00742328 /* SPYRussia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYRussia.h; sourceTree = "<group>"; };
+		43E206BE165F6E2C00742328 /* SPYRussia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYRussia.m; sourceTree = "<group>"; };
+		43E206C0165F6EE400742328 /* SPYKazakh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYKazakh.h; sourceTree = "<group>"; };
+		43E206C1165F6EE400742328 /* SPYKazakh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYKazakh.m; sourceTree = "<group>"; };
+		43E206C3165F6F7900742328 /* SPYBuryatsk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYBuryatsk.h; sourceTree = "<group>"; };
+		43E206C4165F6F7900742328 /* SPYBuryatsk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYBuryatsk.m; sourceTree = "<group>"; };
+		43E206C6165F700B00742328 /* SPYJapan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYJapan.h; sourceTree = "<group>"; };
+		43E206C7165F700B00742328 /* SPYJapan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYJapan.m; sourceTree = "<group>"; };
+		43E9EBA516E85B3C002D6C2E /* SPYFleetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYFleetViewController.h; sourceTree = "<group>"; };
+		43E9EBA616E85B3C002D6C2E /* SPYFleetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYFleetViewController.m; sourceTree = "<group>"; };
+		43E9EBAB16E85CFB002D6C2E /* SPYGamePieceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYGamePieceViewController.h; sourceTree = "<group>"; };
+		43E9EBAC16E85CFB002D6C2E /* SPYGamePieceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYGamePieceViewController.m; sourceTree = "<group>"; };
+		43ED650C16B1112E00C0C9B6 /* SPYBrigadeViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYBrigadeViewLayout.h; sourceTree = "<group>"; };
+		43ED650D16B1112E00C0C9B6 /* SPYBrigadeViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYBrigadeViewLayout.m; sourceTree = "<group>"; };
+		43F8155A16537C4F00D86CBB /* Armies vs Spies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Armies vs Spies.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		43F8155E16537C4F00D86CBB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		43F8156016537C4F00D86CBB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		43F8156216537C4F00D86CBB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		43F8156416537C4F00D86CBB /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		43F8156816537C4F00D86CBB /* Armies vs Spies-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Armies vs Spies-Info.plist"; sourceTree = "<group>"; };
+		43F8156A16537C4F00D86CBB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		43F8156C16537C4F00D86CBB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		43F8156E16537C4F00D86CBB /* Armies vs Spies-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Armies vs Spies-Prefix.pch"; sourceTree = "<group>"; };
+		43F8156F16537C4F00D86CBB /* SPYAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPYAppDelegate.h; sourceTree = "<group>"; };
+		43F8157016537C4F00D86CBB /* SPYAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPYAppDelegate.m; sourceTree = "<group>"; };
+		43F8157216537C4F00D86CBB /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		43F8157416537C4F00D86CBB /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		43F8157616537C4F00D86CBB /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		43F8157916537C4F00D86CBB /* Spies-vs-Armies.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Spies-vs-Armies.xcdatamodel"; sourceTree = "<group>"; };
+		43F8158016537C5000D86CBB /* Armies vs Spies: The Game of the SuperpowersTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Armies vs Spies: The Game of the SuperpowersTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		43F8158116537C5000D86CBB /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		43F8158A16537C5000D86CBB /* Armies vs SpiesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Armies vs SpiesTests-Info.plist"; sourceTree = "<group>"; };
+		43F8158C16537C5000D86CBB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		43F8158E16537C5000D86CBB /* Supremacy__The_Game_of_the_SuperpowersTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Supremacy__The_Game_of_the_SuperpowersTests.h; sourceTree = "<group>"; };
+		43F8158F16537C5000D86CBB /* Supremacy__The_Game_of_the_SuperpowersTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Supremacy__The_Game_of_the_SuperpowersTests.m; sourceTree = "<group>"; };
+		43F8159C16537FE200D86CBB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		43FFC3BA16991D130091521F /* SPYArmyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYArmyView.h; sourceTree = "<group>"; };
+		43FFC3BB16991D130091521F /* SPYArmyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYArmyView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		43F8155716537C4F00D86CBB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				432275E016F04E8800738E36 /* GameKit.framework in Frameworks */,
+				43D1C23316EBD37300738925 /* QuartzCore.framework in Frameworks */,
+				43F8159D16537FE200D86CBB /* CoreLocation.framework in Frameworks */,
+				43F8155F16537C4F00D86CBB /* UIKit.framework in Frameworks */,
+				43F8156116537C4F00D86CBB /* Foundation.framework in Frameworks */,
+				43F8156316537C4F00D86CBB /* CoreGraphics.framework in Frameworks */,
+				43F8156516537C4F00D86CBB /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43F8157C16537C5000D86CBB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43F8158216537C5000D86CBB /* SenTestingKit.framework in Frameworks */,
+				43F8158316537C5000D86CBB /* UIKit.framework in Frameworks */,
+				43F8158416537C5000D86CBB /* Foundation.framework in Frameworks */,
+				43F8158516537C5000D86CBB /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		431C54C016F1B1FB0065C7E2 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				431C54C116F1B21B0065C7E2 /* yellowCircle.png */,
+				431C54C216F1B21B0065C7E2 /* yellowCircle@2x.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
+		4344FCE016648B7E00AD3897 /* model data entities */ = {
+			isa = PBXGroup;
+			children = (
+				435B271E1738D4EB00AD3895 /* Territories.h */,
+				435B271F1738D4EB00AD3895 /* Territories.m */,
+				435B271B1738D4EB00AD3895 /* Spies.h */,
+				435B271C1738D4EB00AD3895 /* Spies.m */,
+				43D41643172BCA3000301363 /* Match.h */,
+				43D41644172BCA3000301363 /* Match.m */,
+				43B9C3B517165A1600A99852 /* ResourceCards.h */,
+				43B9C3B617165A1600A99852 /* ResourceCards.m */,
+				436DE8FE171561E200F33403 /* History.h */,
+				436DE8FF171561E200F33403 /* History.m */,
+				436DE8F8171561E200F33403 /* Players.h */,
+				436DE8F9171561E200F33403 /* Players.m */,
+				436DE8F5171561E200F33403 /* Nations.h */,
+				436DE8F6171561E200F33403 /* Nations.m */,
+				436DE8F2171561E200F33403 /* TerritoriesBorderingJoin.h */,
+				436DE8F3171561E200F33403 /* TerritoriesBorderingJoin.m */,
+			);
+			name = "model data entities";
+			sourceTree = "<group>";
+		};
+		434FE83816C73DEE00A69997 /* battle drill views */ = {
+			isa = PBXGroup;
+			children = (
+				434FE83916C73E5800A69997 /* SPYBattleDrillBG.h */,
+				434FE83A16C73E5800A69997 /* SPYBattleDrillBG.m */,
+				4355E12F16C798CA00187DC9 /* SPYAttackButton.h */,
+				4355E13016C798CA00187DC9 /* SPYAttackButton.m */,
+				4355E13316C798FB00187DC9 /* SPYWithdrawButton.h */,
+				4355E13416C798FB00187DC9 /* SPYWithdrawButton.m */,
+			);
+			name = "battle drill views";
+			sourceTree = "<group>";
+		};
+		435C318E165B70710057B48D /* territory views */ = {
+			isa = PBXGroup;
+			children = (
+				435C3193165B70D20057B48D /* SPYScandanavia.h */,
+				435C3194165B70D20057B48D /* SPYScandanavia.m */,
+				435C3196165B71350057B48D /* SPYKola.h */,
+				435C3197165B71350057B48D /* SPYKola.m */,
+				43706117165CA436004A003E /* SPYBritishIsles.h */,
+				43706118165CA436004A003E /* SPYBritishIsles.m */,
+				4370611B165CA6B7004A003E /* SPYIberia.h */,
+				4370611C165CA6B7004A003E /* SPYIberia.m */,
+				4370611E165CA7A0004A003E /* SPYWesternEurope.h */,
+				4370611F165CA7A0004A003E /* SPYWesternEurope.m */,
+				43706121165CA8F3004A003E /* SPYEasternEurope.h */,
+				43706122165CA8F3004A003E /* SPYEasternEurope.m */,
+				43706124165CAF4C004A003E /* SPYPoland.h */,
+				43706125165CAF4C004A003E /* SPYPoland.m */,
+				43706127165CAFCF004A003E /* SPYGreece.h */,
+				43706128165CAFCF004A003E /* SPYGreece.m */,
+				4370612A165CB049004A003E /* SPYRomania.h */,
+				4370612B165CB049004A003E /* SPYRomania.m */,
+				43A343F6165E058B006E2229 /* SPYAlaska.h */,
+				43A343F7165E058B006E2229 /* SPYAlaska.m */,
+				43A343FA165E0632006E2229 /* SPYNorthernCanada.h */,
+				43A343FB165E0632006E2229 /* SPYNorthernCanada.m */,
+				43A343FD165E068F006E2229 /* SPYGreenland.h */,
+				43A343FE165E068F006E2229 /* SPYGreenland.m */,
+				43A34400165E079A006E2229 /* SPYWesternCanada.h */,
+				43A34401165E079A006E2229 /* SPYWesternCanada.m */,
+				43A34403165E0838006E2229 /* SPYEasternCanada.h */,
+				43A34404165E0838006E2229 /* SPYEasternCanada.m */,
+				43A34406165E08B2006E2229 /* SPYWesternUSA.h */,
+				43A34407165E08B2006E2229 /* SPYWesternUSA.m */,
+				43A34409165E094F006E2229 /* SPYMidwestUSA.h */,
+				43A3440A165E094F006E2229 /* SPYMidwestUSA.m */,
+				43A3440C165E09D1006E2229 /* SPYEasternUSA.h */,
+				43A3440D165E09D1006E2229 /* SPYEasternUSA.m */,
+				43A3440F165E0A57006E2229 /* SPYCentralAmerica.h */,
+				43A34410165E0A57006E2229 /* SPYCentralAmerica.m */,
+				43A34412165E0AEA006E2229 /* SPYVenezuela.h */,
+				43A34413165E0AEA006E2229 /* SPYVenezuela.m */,
+				43A34415165E0B69006E2229 /* SPYPeru.h */,
+				43A34416165E0B69006E2229 /* SPYPeru.m */,
+				43A34418165E0BDA006E2229 /* SPYBrazil.h */,
+				43A34419165E0BDB006E2229 /* SPYBrazil.m */,
+				43A3441B165E0C50006E2229 /* SPYArgentina.h */,
+				43A3441C165E0C50006E2229 /* SPYArgentina.m */,
+				43E206A4165F66C400742328 /* SPYSahara.h */,
+				43E206A5165F66C400742328 /* SPYSahara.m */,
+				43E206A8165F674600742328 /* SPYEgypt.h */,
+				43E206A9165F674600742328 /* SPYEgypt.m */,
+				43E206AB165F680400742328 /* SPYNigeria.h */,
+				43E206AC165F680400742328 /* SPYNigeria.m */,
+				43E206AE165F689800742328 /* SPYMozambique.h */,
+				43E206AF165F689800742328 /* SPYMozambique.m */,
+				43E206B1165F690F00742328 /* SPYZaire.h */,
+				43E206B2165F690F00742328 /* SPYZaire.m */,
+				43E206B4165F69A900742328 /* SPYSouthAfrica.h */,
+				43E206B5165F69A900742328 /* SPYSouthAfrica.m */,
+				43E206B7165F6C9A00742328 /* SPYSiberia.h */,
+				43E206B8165F6C9A00742328 /* SPYSiberia.m */,
+				43E206BA165F6D5200742328 /* SPYYakutsk.h */,
+				43E206BB165F6D5200742328 /* SPYYakutsk.m */,
+				43E206BD165F6E2C00742328 /* SPYRussia.h */,
+				43E206BE165F6E2C00742328 /* SPYRussia.m */,
+				43E206C0165F6EE400742328 /* SPYKazakh.h */,
+				43E206C1165F6EE400742328 /* SPYKazakh.m */,
+				43E206C3165F6F7900742328 /* SPYBuryatsk.h */,
+				43E206C4165F6F7900742328 /* SPYBuryatsk.m */,
+				43E206C6165F700B00742328 /* SPYJapan.h */,
+				43E206C7165F700B00742328 /* SPYJapan.m */,
+				431DCFC11660B8FA00C8BBED /* SPYTurkey.h */,
+				431DCFC21660B8FA00C8BBED /* SPYTurkey.m */,
+				431DCFC51660B97D00C8BBED /* SPYMiddleEast.h */,
+				431DCFC61660B97D00C8BBED /* SPYMiddleEast.m */,
+				431DCFC81660B9FE00C8BBED /* SPYArabia.h */,
+				431DCFC91660B9FE00C8BBED /* SPYArabia.m */,
+				431DCFCB1660BA7300C8BBED /* SPYIraq.h */,
+				431DCFCC1660BA7300C8BBED /* SPYIraq.m */,
+				431DCFCE1660BB0E00C8BBED /* SPYIran.h */,
+				431DCFCF1660BB0E00C8BBED /* SPYIran.m */,
+				431DCFD11660BB9B00C8BBED /* SPYPakistan.h */,
+				431DCFD21660BB9B00C8BBED /* SPYPakistan.m */,
+				431DCFD41660BC3500C8BBED /* SPYTibet.h */,
+				431DCFD51660BC3500C8BBED /* SPYTibet.m */,
+				431DCFD71660BCD600C8BBED /* SPYMongolia.h */,
+				431DCFD81660BCD600C8BBED /* SPYMongolia.m */,
+				431DCFDA1660BD5300C8BBED /* SPYManchuria.h */,
+				431DCFDB1660BD5400C8BBED /* SPYManchuria.m */,
+				431DCFDD1660BDF700C8BBED /* SPYShantung.h */,
+				431DCFDE1660BDF700C8BBED /* SPYShantung.m */,
+				431DCFE01660BE8D00C8BBED /* SPYNanling.h */,
+				431DCFE11660BE8D00C8BBED /* SPYNanling.m */,
+				431DCFE31660C1CF00C8BBED /* SPYIndia.h */,
+				431DCFE41660C1CF00C8BBED /* SPYIndia.m */,
+				431DCFE61660C26400C8BBED /* SPYBurma.h */,
+				431DCFE71660C26400C8BBED /* SPYBurma.m */,
+				431DCFE91660C30000C8BBED /* SPYIndoChina.h */,
+				431DCFEA1660C30000C8BBED /* SPYIndoChina.m */,
+				431DCFEC1660C38500C8BBED /* SPYIndonesia.h */,
+				431DCFED1660C38500C8BBED /* SPYIndonesia.m */,
+				431DCFEF1660C43400C8BBED /* SPYWesternAustralia.h */,
+				431DCFF01660C43400C8BBED /* SPYWesternAustralia.m */,
+				431DCFF21660C4D100C8BBED /* SPYEasternAustralia.h */,
+				431DCFF31660C4D100C8BBED /* SPYEasternAustralia.m */,
+				431DCFF51660C62500C8BBED /* SPYNewZealand.h */,
+				431DCFF61660C62500C8BBED /* SPYNewZealand.m */,
+				43958641166DD108002FFB66 /* SPYBarkleySound.h */,
+				43958642166DD108002FFB66 /* SPYBarkleySound.m */,
+				43958645166DD7E5002FFB66 /* SPYSantaBarbaraPassage.h */,
+				43958646166DD7E5002FFB66 /* SPYSantaBarbaraPassage.m */,
+				43958648166DD971002FFB66 /* SPYGulfOfPanama.h */,
+				43958649166DD971002FFB66 /* SPYGulfOfPanama.m */,
+				4395864B166DDA88002FFB66 /* SPYLimaBay.h */,
+				4395864C166DDA88002FFB66 /* SPYLimaBay.m */,
+				4395864E166E03F2002FFB66 /* SPYHudsonStrait.h */,
+				4395864F166E03F2002FFB66 /* SPYHudsonStrait.m */,
+				43958651166E0529002FFB66 /* SPYGulfOfStLawrence.h */,
+				43958652166E0529002FFB66 /* SPYGulfOfStLawrence.m */,
+				43958654166E064A002FFB66 /* SPYLongIslandSound.h */,
+				43958655166E064A002FFB66 /* SPYLongIslandSound.m */,
+				43958657166E07B0002FFB66 /* SPYCaribbeanSea.h */,
+				43958658166E07B0002FFB66 /* SPYCaribbeanSea.m */,
+				4395865A166E0905002FFB66 /* SPYBaiaSantos.h */,
+				4395865B166E0905002FFB66 /* SPYBaiaSantos.m */,
+				4395865D166E0A67002FFB66 /* SPYRioDePlata.h */,
+				4395865E166E0A67002FFB66 /* SPYRioDePlata.m */,
+				4312B60D167075D100680D31 /* SPYNorthSea.h */,
+				4312B60E167075D100680D31 /* SPYNorthSea.m */,
+				4312B611167076FE00680D31 /* SPYBalticSea.h */,
+				4312B612167076FE00680D31 /* SPYBalticSea.m */,
+				4312B614167077C200680D31 /* SPYBarentsSea.h */,
+				4312B615167077C200680D31 /* SPYBarentsSea.m */,
+				4312B6171670789600680D31 /* SPYBayOfBiscay.h */,
+				4312B6181670789600680D31 /* SPYBayOfBiscay.m */,
+				4312B61A1670796C00680D31 /* SPYMediterraneanSea.h */,
+				4312B61B1670796C00680D31 /* SPYMediterraneanSea.m */,
+				4312B61D16707A5000680D31 /* SPYSeaOfCrete.h */,
+				4312B61E16707A5000680D31 /* SPYSeaOfCrete.m */,
+				4312B62016707B4100680D31 /* SPYBlackSea.h */,
+				4312B62116707B4100680D31 /* SPYBlackSea.m */,
+				4312B62316707C0700680D31 /* SPYRedSea.h */,
+				4312B62416707C0800680D31 /* SPYRedSea.m */,
+				43DB4BBA167729E200BA0152 /* SPYGulfOfGuinea.h */,
+				43DB4BBB167729E400BA0152 /* SPYGulfOfGuinea.m */,
+				43DB4BBE16772AE700BA0152 /* SPYCapeOfGoodHope.h */,
+				43DB4BBF16772AE900BA0152 /* SPYCapeOfGoodHope.m */,
+				43DB4BC116772C8A00BA0152 /* SPYStraitsOfMalacca.h */,
+				43DB4BC216772C8C00BA0152 /* SPYStraitsOfMalacca.m */,
+				43DB4BC41677496B00BA0152 /* SPYArabiaSea.h */,
+				43DB4BC51677496E00BA0152 /* SPYArabiaSea.m */,
+				43DB4BC716774C2C00BA0152 /* SPYSeaOfOkhotsk.h */,
+				43DB4BC816774C2F00BA0152 /* SPYSeaOfOkhotsk.m */,
+				43DB4BCA16774D0900BA0152 /* SPYTokyoBay.h */,
+				43DB4BCB16774D0D00BA0152 /* SPYTokyoBay.m */,
+				43DB4BCD16774DE600BA0152 /* SPYSeaOfJapan.h */,
+				43DB4BCE16774DEA00BA0152 /* SPYSeaOfJapan.m */,
+				43739B021678631D00C96DBB /* SPYSouthChinaSea.h */,
+				43739B031678631D00C96DBB /* SPYSouthChinaSea.m */,
+				43739B061678641100C96DBB /* SPYJavaSea.h */,
+				43739B071678641100C96DBB /* SPYJavaSea.m */,
+				43739B09167864CD00C96DBB /* SPYBayOfBengal.h */,
+				43739B0A167864CE00C96DBB /* SPYBayOfBengal.m */,
+				43739B0C167865F400C96DBB /* SPYTimorSea.h */,
+				43739B0D167865F400C96DBB /* SPYTimorSea.m */,
+				43739B0F167866BB00C96DBB /* SPYSharkBay.h */,
+				43739B10167866BB00C96DBB /* SPYSharkBay.m */,
+				43739B121678676D00C96DBB /* SPYTasmanSea.h */,
+				43739B131678676D00C96DBB /* SPYTasmanSea.m */,
+			);
+			name = "territory views";
+			sourceTree = "<group>";
+		};
+		437449C416CCD019004285C4 /* not used */ = {
+			isa = PBXGroup;
+			children = (
+				43BE9E8C171FEAE90059D71E /* SPYMatchesPickerCllctnVwCntrllr.h */,
+				43BE9E8D171FEAE90059D71E /* SPYMatchesPickerCllctnVwCntrllr.m */,
+				43B4BD291664CDE8003D723D /* SPYRootViewControllerIPadViewController.xib */,
+				43C72895165642B600712C01 /* SPYCollectionViewController.h */,
+				43C72896165642B600712C01 /* SPYCollectionViewController.m */,
+			);
+			name = "not used";
+			sourceTree = "<group>";
+		};
+		4393EDDE16E5C58300E20CD6 /* game piece views */ = {
+			isa = PBXGroup;
+			children = (
+				43FFC3BA16991D130091521F /* SPYArmyView.h */,
+				43FFC3BB16991D130091521F /* SPYArmyView.m */,
+				4393EDDF16E5C61200E20CD6 /* SPYNavyView.h */,
+				4393EDE016E5C61200E20CD6 /* SPYNavyView.m */,
+			);
+			name = "game piece views";
+			sourceTree = "<group>";
+		};
+		43B9CA941704332D00021C3C /* dataLoad neverChanges */ = {
+			isa = PBXGroup;
+			children = (
+				43B9CA971704342000021C3C /* SPYLoadGameData.h */,
+				43B9CA981704342000021C3C /* SPYLoadGameData.m */,
+			);
+			name = "dataLoad neverChanges";
+			path = ..;
+			sourceTree = "<group>";
+		};
+		43B9CA951704337F00021C3C /* dataLoad startGame */ = {
+			isa = PBXGroup;
+			children = (
+				4344FCE216648E7200AD3897 /* SPYLoadStartData.h */,
+				4344FCE316648E7200AD3897 /* SPYLoadStartData.m */,
+			);
+			name = "dataLoad startGame";
+			path = ..;
+			sourceTree = "<group>";
+		};
+		43B9CA96170433B800021C3C /* dataActuators */ = {
+			isa = PBXGroup;
+			children = (
+				437449C616CCEA67004285C4 /* SPYChangeData.h */,
+				437449C716CCEA67004285C4 /* SPYChangeData.m */,
+			);
+			name = dataActuators;
+			sourceTree = "<group>";
+		};
+		43BE9E92171FF1250059D71E /* matches */ = {
+			isa = PBXGroup;
+			children = (
+				43A3EDA0171D484000D062A0 /* SPYMatchControl.h */,
+				43A3EDA1171D484000D062A0 /* SPYMatchControl.m */,
+				436DE9041715632A00F33403 /* SPYMatch.h */,
+				436DE9051715632A00F33403 /* SPYMatch.m */,
+				43BE9E8F171FEC130059D71E /* SPYMatchViewController.h */,
+				43BE9E90171FEC130059D71E /* SPYMatchViewController.m */,
+			);
+			name = matches;
+			sourceTree = "<group>";
+		};
+		43E9EBAE16E85E39002D6C2E /* game piece collection views */ = {
+			isa = PBXGroup;
+			children = (
+				43E9EBAB16E85CFB002D6C2E /* SPYGamePieceViewController.h */,
+				43E9EBAC16E85CFB002D6C2E /* SPYGamePieceViewController.m */,
+				43E9EBA516E85B3C002D6C2E /* SPYFleetViewController.h */,
+				43E9EBA616E85B3C002D6C2E /* SPYFleetViewController.m */,
+				4340D87F169D5EB100E3CA78 /* SPYBrigadeViewController.h */,
+				4340D880169D5EB100E3CA78 /* SPYBrigadeViewController.m */,
+			);
+			name = "game piece collection views";
+			sourceTree = "<group>";
+		};
+		43F8154F16537C4F00D86CBB = {
+			isa = PBXGroup;
+			children = (
+				43F8156616537C4F00D86CBB /* Armies vs Spies */,
+				43F8158816537C5000D86CBB /* Supremacy: The Game of the SuperpowersTests */,
+				43F8155D16537C4F00D86CBB /* Frameworks */,
+				43F8155B16537C4F00D86CBB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		43F8155B16537C4F00D86CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				43F8155A16537C4F00D86CBB /* Armies vs Spies.app */,
+				43F8158016537C5000D86CBB /* Armies vs Spies: The Game of the SuperpowersTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		43F8155D16537C4F00D86CBB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				432275DF16F04E8800738E36 /* GameKit.framework */,
+				43D1C23216EBD37300738925 /* QuartzCore.framework */,
+				43F8159C16537FE200D86CBB /* CoreLocation.framework */,
+				43F8155E16537C4F00D86CBB /* UIKit.framework */,
+				43F8156016537C4F00D86CBB /* Foundation.framework */,
+				43F8156216537C4F00D86CBB /* CoreGraphics.framework */,
+				43F8156416537C4F00D86CBB /* CoreData.framework */,
+				43F8158116537C5000D86CBB /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		43F8156616537C4F00D86CBB /* Armies vs Spies */ = {
+			isa = PBXGroup;
+			children = (
+				43F8156F16537C4F00D86CBB /* SPYAppDelegate.h */,
+				43F8157016537C4F00D86CBB /* SPYAppDelegate.m */,
+				43CE1C1E16C35939008D0CDE /* SPYGlobalConstants.h */,
+				43CE1C1F16C35939008D0CDE /* SPYGlobalConstants.m */,
+				43B9CA96170433B800021C3C /* dataActuators */,
+				43B9CA951704337F00021C3C /* dataLoad startGame */,
+				43B9CA941704332D00021C3C /* dataLoad neverChanges */,
+				43F8157816537C4F00D86CBB /* Spies-vs-Armies.xcdatamodeld */,
+				4344FCE016648B7E00AD3897 /* model data entities */,
+				435C3190165B70A20057B48D /* SPYTerritoryTemplate.h */,
+				435C3191165B70A20057B48D /* SPYTerritoryTemplate.m */,
+				431C54C016F1B1FB0065C7E2 /* images */,
+				435C318E165B70710057B48D /* territory views */,
+				43B4BD271664CDE8003D723D /* SPYRootViewControllerIPadViewController.h */,
+				43B4BD281664CDE8003D723D /* SPYRootViewControllerIPadViewController.m */,
+				430978BC1659D8CF002CDF38 /* SPYGameBoardIPadViewController.h */,
+				430978BD1659D8CF002CDF38 /* SPYGameBoardIPadViewController.m */,
+				430978BE1659D8CF002CDF38 /* SPYGameBoardIPadViewController.xib */,
+				43156AA0165A065400DCC26C /* SPYWorldMapView.h */,
+				43156AA1165A065400DCC26C /* SPYWorldMapView.m */,
+				434A742616A13953005198CF /* SPYTemplateLayerView.h */,
+				434A742716A13953005198CF /* SPYTemplateLayerView.m */,
+				43A7DDD71669ED9000B1A42B /* SPYNameTextLabel.h */,
+				43A7DDD81669ED9000B1A42B /* SPYNameTextLabel.m */,
+				43BE9E92171FF1250059D71E /* matches */,
+				4393EDDE16E5C58300E20CD6 /* game piece views */,
+				43E9EBAE16E85E39002D6C2E /* game piece collection views */,
+				43ED650C16B1112E00C0C9B6 /* SPYBrigadeViewLayout.h */,
+				43ED650D16B1112E00C0C9B6 /* SPYBrigadeViewLayout.m */,
+				434FE83816C73DEE00A69997 /* battle drill views */,
+				434FE83516C73DC700A69997 /* SPYBattleDrillViewController.h */,
+				434FE83616C73DC700A69997 /* SPYBattleDrillViewController.m */,
+				43F8156716537C4F00D86CBB /* Supporting Files */,
+				437449C416CCD019004285C4 /* not used */,
+			);
+			name = "Armies vs Spies";
+			path = "Supremacy: The Game of the Superpowers";
+			sourceTree = "<group>";
+		};
+		43F8156716537C4F00D86CBB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				43F8156816537C4F00D86CBB /* Armies vs Spies-Info.plist */,
+				43F8156916537C4F00D86CBB /* InfoPlist.strings */,
+				43F8156C16537C4F00D86CBB /* main.m */,
+				43F8156E16537C4F00D86CBB /* Armies vs Spies-Prefix.pch */,
+				43F8157216537C4F00D86CBB /* Default.png */,
+				43F8157416537C4F00D86CBB /* Default@2x.png */,
+				43F8157616537C4F00D86CBB /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		43F8158816537C5000D86CBB /* Supremacy: The Game of the SuperpowersTests */ = {
+			isa = PBXGroup;
+			children = (
+				43F8158E16537C5000D86CBB /* Supremacy__The_Game_of_the_SuperpowersTests.h */,
+				43F8158F16537C5000D86CBB /* Supremacy__The_Game_of_the_SuperpowersTests.m */,
+				43F8158916537C5000D86CBB /* Supporting Files */,
+			);
+			path = "Supremacy: The Game of the SuperpowersTests";
+			sourceTree = "<group>";
+		};
+		43F8158916537C5000D86CBB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				43F8158A16537C5000D86CBB /* Armies vs SpiesTests-Info.plist */,
+				43F8158B16537C5000D86CBB /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		43F8155916537C4F00D86CBB /* Armies vs Spies */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 43F8159316537C5000D86CBB /* Build configuration list for PBXNativeTarget "Armies vs Spies" */;
+			buildPhases = (
+				43F8155616537C4F00D86CBB /* Sources */,
+				43F8155716537C4F00D86CBB /* Frameworks */,
+				43F8155816537C4F00D86CBB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Armies vs Spies";
+			productName = "Supremacy: The Game of the Superpowers";
+			productReference = 43F8155A16537C4F00D86CBB /* Armies vs Spies.app */;
+			productType = "com.apple.product-type.application";
+		};
+		43F8157F16537C5000D86CBB /* Armies vs SpiesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 43F8159616537C5000D86CBB /* Build configuration list for PBXNativeTarget "Armies vs SpiesTests" */;
+			buildPhases = (
+				43F8157B16537C5000D86CBB /* Sources */,
+				43F8157C16537C5000D86CBB /* Frameworks */,
+				43F8157D16537C5000D86CBB /* Resources */,
+				43F8157E16537C5000D86CBB /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				43F8158716537C5000D86CBB /* PBXTargetDependency */,
+			);
+			name = "Armies vs SpiesTests";
+			productName = "Supremacy: The Game of the SuperpowersTests";
+			productReference = 43F8158016537C5000D86CBB /* Armies vs Spies: The Game of the SuperpowersTests.octest */;
+			productType = "com.apple.product-type.bundle.ocunit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		43F8155116537C4F00D86CBB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = SPY;
+				LastTestingUpgradeCheck = 0710;
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = "Ham Again LLC";
+			};
+			buildConfigurationList = 43F8155416537C4F00D86CBB /* Build configuration list for PBXProject "Armies vs Spies" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 43F8154F16537C4F00D86CBB;
+			productRefGroup = 43F8155B16537C4F00D86CBB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				43F8155916537C4F00D86CBB /* Armies vs Spies */,
+				43F8157F16537C5000D86CBB /* Armies vs SpiesTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		43F8155816537C4F00D86CBB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43F8156B16537C4F00D86CBB /* InfoPlist.strings in Resources */,
+				43F8157316537C4F00D86CBB /* Default.png in Resources */,
+				43F8157516537C4F00D86CBB /* Default@2x.png in Resources */,
+				43F8157716537C4F00D86CBB /* Default-568h@2x.png in Resources */,
+				430978C01659D8CF002CDF38 /* SPYGameBoardIPadViewController.xib in Resources */,
+				43B4BD2B1664CDE8003D723D /* SPYRootViewControllerIPadViewController.xib in Resources */,
+				431C54C316F1B21B0065C7E2 /* yellowCircle.png in Resources */,
+				431C54C416F1B21B0065C7E2 /* yellowCircle@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43F8157D16537C5000D86CBB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43F8158D16537C5000D86CBB /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		43F8157E16537C5000D86CBB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		43F8155616537C4F00D86CBB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43F8156D16537C4F00D86CBB /* main.m in Sources */,
+				43F8157116537C4F00D86CBB /* SPYAppDelegate.m in Sources */,
+				43F8157A16537C4F00D86CBB /* Spies-vs-Armies.xcdatamodeld in Sources */,
+				43C72897165642B600712C01 /* SPYCollectionViewController.m in Sources */,
+				430978BF1659D8CF002CDF38 /* SPYGameBoardIPadViewController.m in Sources */,
+				43156AA2165A065400DCC26C /* SPYWorldMapView.m in Sources */,
+				435C3192165B70A20057B48D /* SPYTerritoryTemplate.m in Sources */,
+				435C3195165B70D20057B48D /* SPYScandanavia.m in Sources */,
+				435C3198165B71350057B48D /* SPYKola.m in Sources */,
+				43706119165CA436004A003E /* SPYBritishIsles.m in Sources */,
+				4370611D165CA6B7004A003E /* SPYIberia.m in Sources */,
+				43706120165CA7A0004A003E /* SPYWesternEurope.m in Sources */,
+				43706123165CA8F3004A003E /* SPYEasternEurope.m in Sources */,
+				43706126165CAF4C004A003E /* SPYPoland.m in Sources */,
+				43706129165CAFCF004A003E /* SPYGreece.m in Sources */,
+				4370612C165CB049004A003E /* SPYRomania.m in Sources */,
+				43A343F8165E058B006E2229 /* SPYAlaska.m in Sources */,
+				43A343FC165E0632006E2229 /* SPYNorthernCanada.m in Sources */,
+				43A343FF165E068F006E2229 /* SPYGreenland.m in Sources */,
+				43A34402165E079A006E2229 /* SPYWesternCanada.m in Sources */,
+				43A34405165E0838006E2229 /* SPYEasternCanada.m in Sources */,
+				43A34408165E08B2006E2229 /* SPYWesternUSA.m in Sources */,
+				43A3440B165E094F006E2229 /* SPYMidwestUSA.m in Sources */,
+				43A3440E165E09D1006E2229 /* SPYEasternUSA.m in Sources */,
+				43A34411165E0A57006E2229 /* SPYCentralAmerica.m in Sources */,
+				43A34414165E0AEA006E2229 /* SPYVenezuela.m in Sources */,
+				43A34417165E0B69006E2229 /* SPYPeru.m in Sources */,
+				43A3441A165E0BDB006E2229 /* SPYBrazil.m in Sources */,
+				43A3441D165E0C50006E2229 /* SPYArgentina.m in Sources */,
+				43E206A6165F66C400742328 /* SPYSahara.m in Sources */,
+				43E206AA165F674600742328 /* SPYEgypt.m in Sources */,
+				43E206AD165F680400742328 /* SPYNigeria.m in Sources */,
+				43E206B0165F689800742328 /* SPYMozambique.m in Sources */,
+				43E206B3165F690F00742328 /* SPYZaire.m in Sources */,
+				43E206B6165F69A900742328 /* SPYSouthAfrica.m in Sources */,
+				43E206B9165F6C9A00742328 /* SPYSiberia.m in Sources */,
+				43E206BC165F6D5200742328 /* SPYYakutsk.m in Sources */,
+				43E206BF165F6E2C00742328 /* SPYRussia.m in Sources */,
+				43E206C2165F6EE500742328 /* SPYKazakh.m in Sources */,
+				43E206C5165F6F7A00742328 /* SPYBuryatsk.m in Sources */,
+				43E206C8165F700B00742328 /* SPYJapan.m in Sources */,
+				431DCFC31660B8FA00C8BBED /* SPYTurkey.m in Sources */,
+				431DCFC71660B97D00C8BBED /* SPYMiddleEast.m in Sources */,
+				431DCFCA1660B9FE00C8BBED /* SPYArabia.m in Sources */,
+				431DCFCD1660BA7300C8BBED /* SPYIraq.m in Sources */,
+				431DCFD01660BB0E00C8BBED /* SPYIran.m in Sources */,
+				431DCFD31660BB9B00C8BBED /* SPYPakistan.m in Sources */,
+				431DCFD61660BC3500C8BBED /* SPYTibet.m in Sources */,
+				431DCFD91660BCD600C8BBED /* SPYMongolia.m in Sources */,
+				431DCFDC1660BD5400C8BBED /* SPYManchuria.m in Sources */,
+				431DCFDF1660BDF700C8BBED /* SPYShantung.m in Sources */,
+				431DCFE21660BE8D00C8BBED /* SPYNanling.m in Sources */,
+				431DCFE51660C1CF00C8BBED /* SPYIndia.m in Sources */,
+				431DCFE81660C26400C8BBED /* SPYBurma.m in Sources */,
+				431DCFEB1660C30000C8BBED /* SPYIndoChina.m in Sources */,
+				431DCFEE1660C38600C8BBED /* SPYIndonesia.m in Sources */,
+				431DCFF11660C43500C8BBED /* SPYWesternAustralia.m in Sources */,
+				431DCFF41660C4D100C8BBED /* SPYEasternAustralia.m in Sources */,
+				431DCFF71660C62600C8BBED /* SPYNewZealand.m in Sources */,
+				4344FCE416648E7200AD3897 /* SPYLoadStartData.m in Sources */,
+				43B4BD2A1664CDE8003D723D /* SPYRootViewControllerIPadViewController.m in Sources */,
+				43A7DDD91669ED9000B1A42B /* SPYNameTextLabel.m in Sources */,
+				43958643166DD108002FFB66 /* SPYBarkleySound.m in Sources */,
+				43958647166DD7E5002FFB66 /* SPYSantaBarbaraPassage.m in Sources */,
+				4395864A166DD971002FFB66 /* SPYGulfOfPanama.m in Sources */,
+				4395864D166DDA88002FFB66 /* SPYLimaBay.m in Sources */,
+				43958650166E03F2002FFB66 /* SPYHudsonStrait.m in Sources */,
+				43958653166E0529002FFB66 /* SPYGulfOfStLawrence.m in Sources */,
+				43958656166E064A002FFB66 /* SPYLongIslandSound.m in Sources */,
+				43958659166E07B0002FFB66 /* SPYCaribbeanSea.m in Sources */,
+				4395865C166E0906002FFB66 /* SPYBaiaSantos.m in Sources */,
+				4395865F166E0A68002FFB66 /* SPYRioDePlata.m in Sources */,
+				4312B60F167075D100680D31 /* SPYNorthSea.m in Sources */,
+				4312B613167076FE00680D31 /* SPYBalticSea.m in Sources */,
+				4312B616167077C200680D31 /* SPYBarentsSea.m in Sources */,
+				4312B6191670789600680D31 /* SPYBayOfBiscay.m in Sources */,
+				4312B61C1670796C00680D31 /* SPYMediterraneanSea.m in Sources */,
+				4312B61F16707A5000680D31 /* SPYSeaOfCrete.m in Sources */,
+				4312B62216707B4100680D31 /* SPYBlackSea.m in Sources */,
+				4312B62516707C0800680D31 /* SPYRedSea.m in Sources */,
+				43DB4BBC167729E600BA0152 /* SPYGulfOfGuinea.m in Sources */,
+				43DB4BC016772AEB00BA0152 /* SPYCapeOfGoodHope.m in Sources */,
+				43DB4BC316772C8F00BA0152 /* SPYStraitsOfMalacca.m in Sources */,
+				43DB4BC61677497200BA0152 /* SPYArabiaSea.m in Sources */,
+				43DB4BC916774C3300BA0152 /* SPYSeaOfOkhotsk.m in Sources */,
+				43DB4BCC16774D1200BA0152 /* SPYTokyoBay.m in Sources */,
+				43DB4BCF16774DEF00BA0152 /* SPYSeaOfJapan.m in Sources */,
+				43739B041678631E00C96DBB /* SPYSouthChinaSea.m in Sources */,
+				43739B081678641100C96DBB /* SPYJavaSea.m in Sources */,
+				43739B0B167864CE00C96DBB /* SPYBayOfBengal.m in Sources */,
+				43739B0E167865F400C96DBB /* SPYTimorSea.m in Sources */,
+				43739B11167866BB00C96DBB /* SPYSharkBay.m in Sources */,
+				43739B141678676E00C96DBB /* SPYTasmanSea.m in Sources */,
+				43FFC3BC16991D130091521F /* SPYArmyView.m in Sources */,
+				4340D881169D5EB100E3CA78 /* SPYBrigadeViewController.m in Sources */,
+				434A742816A13953005198CF /* SPYTemplateLayerView.m in Sources */,
+				43ED650E16B1112E00C0C9B6 /* SPYBrigadeViewLayout.m in Sources */,
+				43CE1C2016C35939008D0CDE /* SPYGlobalConstants.m in Sources */,
+				434FE83716C73DC700A69997 /* SPYBattleDrillViewController.m in Sources */,
+				434FE83B16C73E5800A69997 /* SPYBattleDrillBG.m in Sources */,
+				4355E13116C798CA00187DC9 /* SPYAttackButton.m in Sources */,
+				4355E13516C798FB00187DC9 /* SPYWithdrawButton.m in Sources */,
+				437449C816CCEA67004285C4 /* SPYChangeData.m in Sources */,
+				4393EDE116E5C61200E20CD6 /* SPYNavyView.m in Sources */,
+				43E9EBA716E85B3C002D6C2E /* SPYFleetViewController.m in Sources */,
+				43E9EBAD16E85CFB002D6C2E /* SPYGamePieceViewController.m in Sources */,
+				43B9CA991704342000021C3C /* SPYLoadGameData.m in Sources */,
+				436DE8F4171561E200F33403 /* TerritoriesBorderingJoin.m in Sources */,
+				436DE8F7171561E200F33403 /* Nations.m in Sources */,
+				436DE8FA171561E200F33403 /* Players.m in Sources */,
+				436DE900171561E200F33403 /* History.m in Sources */,
+				436DE9061715632A00F33403 /* SPYMatch.m in Sources */,
+				43B9C3B717165A1600A99852 /* ResourceCards.m in Sources */,
+				43A3EDA2171D484000D062A0 /* SPYMatchControl.m in Sources */,
+				43BE9E8E171FEAE90059D71E /* SPYMatchesPickerCllctnVwCntrllr.m in Sources */,
+				43BE9E91171FEC140059D71E /* SPYMatchViewController.m in Sources */,
+				43D41645172BCA3000301363 /* Match.m in Sources */,
+				435B271D1738D4EB00AD3895 /* Spies.m in Sources */,
+				435B27201738D4EB00AD3895 /* Territories.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43F8157B16537C5000D86CBB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43F8159016537C5000D86CBB /* Supremacy__The_Game_of_the_SuperpowersTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		43F8158716537C5000D86CBB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 43F8155916537C4F00D86CBB /* Armies vs Spies */;
+			targetProxy = 43F8158616537C5000D86CBB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		43F8156916537C4F00D86CBB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				43F8156A16537C4F00D86CBB /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		43F8158B16537C5000D86CBB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				43F8158C16537C5000D86CBB /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		43F8159116537C5000D86CBB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "Armies vs Spies";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		43F8159216537C5000D86CBB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PRODUCT_NAME = "Armies vs Spies";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		43F8159416537C5000D86CBB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Supremacy: The Game of the Superpowers/Armies vs Spies-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/Supremacy: The Game of the Superpowers/Armies vs Spies-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.David-Vincent-Hanagan.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "Armies vs Spies";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		43F8159516537C5000D86CBB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Supremacy: The Game of the Superpowers/Armies vs Spies-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/Supremacy: The Game of the Superpowers/Armies vs Spies-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.David-Vincent-Hanagan.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "Armies vs Spies";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		43F8159716537C5000D86CBB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Supremacy: The Game of the Superpowers/Supremacy: The Game of the Superpowers-Prefix.pch";
+				INFOPLIST_FILE = "Supremacy: The Game of the SuperpowersTests/Armies vs Spies: The Game of the SuperpowersTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "David-Vincent-Hanagan.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "Armies vs Spies: The Game of the SuperpowersTests";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		43F8159816537C5000D86CBB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Supremacy: The Game of the Superpowers/Supremacy: The Game of the Superpowers-Prefix.pch";
+				INFOPLIST_FILE = "Supremacy: The Game of the SuperpowersTests/Armies vs Spies: The Game of the SuperpowersTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "David-Vincent-Hanagan.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "Armies vs Spies: The Game of the SuperpowersTests";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		43F8155416537C4F00D86CBB /* Build configuration list for PBXProject "Armies vs Spies" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				43F8159116537C5000D86CBB /* Debug */,
+				43F8159216537C5000D86CBB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		43F8159316537C5000D86CBB /* Build configuration list for PBXNativeTarget "Armies vs Spies" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				43F8159416537C5000D86CBB /* Debug */,
+				43F8159516537C5000D86CBB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		43F8159616537C5000D86CBB /* Build configuration list for PBXNativeTarget "Armies vs SpiesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				43F8159716537C5000D86CBB /* Debug */,
+				43F8159816537C5000D86CBB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		43F8157816537C4F00D86CBB /* Spies-vs-Armies.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				43F8157916537C4F00D86CBB /* Spies-vs-Armies.xcdatamodel */,
+			);
+			currentVersion = 43F8157916537C4F00D86CBB /* Spies-vs-Armies.xcdatamodel */;
+			path = "Spies-vs-Armies.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 43F8155116537C4F00D86CBB /* Project object */;
+}

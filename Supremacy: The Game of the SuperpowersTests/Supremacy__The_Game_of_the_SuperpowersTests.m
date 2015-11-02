@@ -1,6 +1,6 @@
 //
 //  Supremacy__The_Game_of_the_SuperpowersTests.m
-//  Supremacy: The Game of the SuperpowersTests
+//  Armies vs SpiesTests
 //
 //  Created by Japhy Ryder on 11/13/12.
 //  Copyright (c) 2012 Ham Again LLC. All rights reserved.
@@ -26,7 +26,7 @@
 
 - (void)testExample
 {
-    STFail(@"Unit tests are not implemented yet in Supremacy: The Game of the SuperpowersTests");
+    STFail(@"Unit tests are not implemented yet in Armies vs SpiesTests");
 }
 
 @end
