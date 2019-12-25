@@ -12,6 +12,4 @@
 
 @property (strong, nonatomic) UIColor* baseColor;
 
-
-
 @end

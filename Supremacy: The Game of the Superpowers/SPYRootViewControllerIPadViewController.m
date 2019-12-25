@@ -419,6 +419,7 @@
         
     NSLog(@"localPlayer is %@", localPlayer);
 
+    BOOL localPlayerIsAuthenticated = localPlayer.isAuthenticated;
     
     localPlayer.authenticateHandler = ^(UIViewController* viewController, NSError* error){
       
@@ -439,7 +440,7 @@
             //add the subview
             [self.view addSubview:gameCenterAuthticationController.view];
             
-        }else if (localPlayer.isAuthenticated){
+        }else if (localPlayerIsAuthenticated){
             
             NSLog(@"local player is authenticated");
             

@@ -139,7 +139,6 @@
 		43F8157516537C4F00D86CBB /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43F8157416537C4F00D86CBB /* Default@2x.png */; };
 		43F8157716537C4F00D86CBB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43F8157616537C4F00D86CBB /* Default-568h@2x.png */; };
 		43F8157A16537C4F00D86CBB /* Spies-vs-Armies.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 43F8157816537C4F00D86CBB /* Spies-vs-Armies.xcdatamodeld */; };
-		43F8158216537C5000D86CBB /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F8158116537C5000D86CBB /* SenTestingKit.framework */; };
 		43F8158316537C5000D86CBB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F8155E16537C4F00D86CBB /* UIKit.framework */; };
 		43F8158416537C5000D86CBB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F8156016537C4F00D86CBB /* Foundation.framework */; };
 		43F8158516537C5000D86CBB /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F8156416537C4F00D86CBB /* CoreData.framework */; };
@@ -411,8 +410,7 @@
 		43F8157416537C4F00D86CBB /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		43F8157616537C4F00D86CBB /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		43F8157916537C4F00D86CBB /* Spies-vs-Armies.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Spies-vs-Armies.xcdatamodel"; sourceTree = "<group>"; };
-		43F8158016537C5000D86CBB /* Armies vs Spies: The Game of the SuperpowersTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Armies vs Spies: The Game of the SuperpowersTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		43F8158116537C5000D86CBB /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		43F8158016537C5000D86CBB /* Armies vs Spies: The Game of the SuperpowersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Armies vs Spies: The Game of the SuperpowersTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		43F8158A16537C5000D86CBB /* Armies vs SpiesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Armies vs SpiesTests-Info.plist"; sourceTree = "<group>"; };
 		43F8158C16537C5000D86CBB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		43F8158E16537C5000D86CBB /* Supremacy__The_Game_of_the_SuperpowersTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Supremacy__The_Game_of_the_SuperpowersTests.h; sourceTree = "<group>"; };
@@ -441,7 +439,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				43F8158216537C5000D86CBB /* SenTestingKit.framework in Frameworks */,
 				43F8158316537C5000D86CBB /* UIKit.framework in Frameworks */,
 				43F8158416537C5000D86CBB /* Foundation.framework in Frameworks */,
 				43F8158516537C5000D86CBB /* CoreData.framework in Frameworks */,
@@ -761,7 +758,7 @@
 			isa = PBXGroup;
 			children = (
 				43F8155A16537C4F00D86CBB /* Armies vs Spies.app */,
-				43F8158016537C5000D86CBB /* Armies vs Spies: The Game of the SuperpowersTests.octest */,
+				43F8158016537C5000D86CBB /* Armies vs Spies: The Game of the SuperpowersTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -776,7 +773,6 @@
 				43F8156016537C4F00D86CBB /* Foundation.framework */,
 				43F8156216537C4F00D86CBB /* CoreGraphics.framework */,
 				43F8156416537C4F00D86CBB /* CoreData.framework */,
-				43F8158116537C5000D86CBB /* SenTestingKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -892,8 +888,8 @@
 			);
 			name = "Armies vs SpiesTests";
 			productName = "Supremacy: The Game of the SuperpowersTests";
-			productReference = 43F8158016537C5000D86CBB /* Armies vs Spies: The Game of the SuperpowersTests.octest */;
-			productType = "com.apple.product-type.bundle.ocunit-test";
+			productReference = 43F8158016537C5000D86CBB /* Armies vs Spies: The Game of the SuperpowersTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -902,9 +898,14 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = SPY;
-				LastTestingUpgradeCheck = 0710;
+				LastTestingUpgradeCheck = 0720;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Ham Again LLC";
+				TargetAttributes = {
+					43F8155916537C4F00D86CBB = {
+						DevelopmentTeam = C3YDZ7M5S2;
+					};
+				};
 			};
 			buildConfigurationList = 43F8155416537C4F00D86CBB /* Build configuration list for PBXProject "Armies vs Spies" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1189,6 +1190,7 @@
 		43F8159416537C5000D86CBB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Supremacy: The Game of the Superpowers/Armies vs Spies-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Supremacy: The Game of the Superpowers/Armies vs Spies-Info.plist";
@@ -1202,6 +1204,7 @@
 		43F8159516537C5000D86CBB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Supremacy: The Game of the Superpowers/Armies vs Spies-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Supremacy: The Game of the Superpowers/Armies vs Spies-Info.plist";
@@ -1218,13 +1221,13 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Supremacy: The Game of the Superpowers/Supremacy: The Game of the Superpowers-Prefix.pch";
 				INFOPLIST_FILE = "Supremacy: The Game of the SuperpowersTests/Armies vs Spies: The Game of the SuperpowersTests-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "David-Vincent-Hanagan.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "Armies vs Spies: The Game of the SuperpowersTests";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -1234,13 +1237,13 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Supremacy: The Game of the Superpowers/Supremacy: The Game of the Superpowers-Prefix.pch";
 				INFOPLIST_FILE = "Supremacy: The Game of the SuperpowersTests/Armies vs Spies: The Game of the SuperpowersTests-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "David-Vincent-Hanagan.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "Armies vs Spies: The Game of the SuperpowersTests";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
