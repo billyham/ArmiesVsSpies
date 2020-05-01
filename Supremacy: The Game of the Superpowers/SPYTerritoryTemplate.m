@@ -12,21 +12,27 @@
 #import "SPYArmyView.h"
 #import "SPYGlobalConstants.h"
 #import "SPYChangeData.h"
+#import "SPYBrigadeViewController.h"
 
 @interface SPYTerritoryTemplate ()
 
-@property (strong, nonatomic) NSString* state;
+@property (strong, nonatomic) NSString* state; // "small" or "big"
 @property BOOL inBackground;
 @property BOOL isUnderBattleDrill;
+@property BOOL isSplit;
+
+
+// under split condition
+@property (strong, nonatomic) NSNumber *armiesSplit;
 
 -(void)fadeOut:(NSNotification*)note;
 -(void)fadeIn:(NSNotification*)note;
 
 @end
 
-
-
 @implementation SPYTerritoryTemplate
+
+@synthesize gameBoardDelegate;
 
 @synthesize managedObjectContext;
 @synthesize index;
@@ -35,7 +41,6 @@
 @synthesize brigadeCenter;
 @synthesize name;
 @synthesize path;
-@synthesize armies;
 @synthesize colorName;
 @synthesize startColor;
 @synthesize nationIndex;
@@ -47,13 +52,16 @@
 @synthesize inBackground;
 @synthesize isUnderBattleDrill;
 
+@synthesize armiesSplit;
+@synthesize brigadeCenterOriginalWithSplit;
+@synthesize brigadeCenterSplit;
+
 //@synthesize brigadeViewController;
 
 
 //master control for the change in size
 const float sizeChangeFactor = 1.33;
 const float originalEmbiggenScale = 0;
-
 
 #pragma mark - Init and activiation
 
@@ -63,6 +71,7 @@ const float originalEmbiggenScale = 0;
     if (self) {
         
         state = @"small";
+        _isSplit = NO;
         
     }
     return self;
@@ -172,7 +181,6 @@ const float originalEmbiggenScale = 0;
     [nc addObserver:self selector:@selector(raiseBattleDrillFlag:) name:@"showBattleDrill" object:nil];
     [nc addObserver:self selector:@selector(lowerBattleDrillFlag:) name:@"hideBattleDrill" object:nil];
     
-    
     //set view's frame
     if ([fetchResult count] > 0){
         
@@ -186,6 +194,8 @@ const float originalEmbiggenScale = 0;
     self.name = [[SPYNameTextLabel alloc] initWithFrame:self.bounds];
     
     //if the db result has an object, use it to derive the name and other stats
+    NSNumber *armiesForReal;
+
     if ([fetchResult count] > 0){
         
         Territories* territory = [fetchResult objectAtIndex:0];
@@ -196,11 +206,14 @@ const float originalEmbiggenScale = 0;
         self.name.nameLabelY = [territory nameLabelY];
         self.name.territoryShortName = [territory shortName];
         
-        if ([territory armies]){
-            self.armies = [territory armies];
+        armiesForReal = [territory armies];
+        
+        if (armiesForReal){
+            [self.gameBoardDelegate setArmies:armiesForReal ForTerritory:[self.name text]];
         }else {
-            self.armies = @0;
+            [self.gameBoardDelegate setArmies:@0 ForTerritory:[self.name text]];
         }
+        
         
         if ([territory isSea]){
             self.isSea = [[territory isSea] boolValue];
@@ -212,6 +225,8 @@ const float originalEmbiggenScale = 0;
         self.brigadeCenter = CGPointMake(self.center.x + [[territory brigadeX] floatValue],
                                              self.center.y + [[territory brigadeY] floatValue]);
 
+        self.brigadeCenterOriginalWithSplit = CGPointMake(self.brigadeCenter.x - 20, self.brigadeCenter.y - 40);
+        self.brigadeCenterSplit = CGPointMake(self.brigadeCenter.x + 20, self.brigadeCenter.y + 40);
         
         //the permanent nationindex for each territory (color)
         //_______this works but is messy. it counts one result from the set and seas repsond as null
@@ -222,7 +237,6 @@ const float originalEmbiggenScale = 0;
             NSLog(@"territory %@ says self.nationIndex was nil", [self class]);
             self.nationIndex = [NSNumber numberWithInt:1];
         }
-        
         
 //        self.nationIndex = [[[territory terrToNation] anyObject] index];
 //        if (!self.nationIndex) {
@@ -238,23 +252,18 @@ const float originalEmbiggenScale = 0;
             //if not set, default to territory's permanent index
             self.currentNationIndex = self.nationIndex;
         }
-        
         //_______________I'm suspicious of this. terrToNation doesn't seem to work as I expect
         self.colorName = (NSString*) [[[territory terrToNation] anyObject] color];
         
         self.startColor =  [myColorfulDic objectForKey:[[[territory terrToNation] anyObject] color]];
         if (!self.startColor) self.startColor = [UIColor blackColor];
-        
-        
-        
     } else {
-        
         self.name.text = @"Database Error";
         self.name.nameLabelY = @0;
         self.name.nameLabelX = @0;
         self.name.territoryShortName = @"defaultName";
     }
-    
+
     self.name.opaque = NO;
     self.name.backgroundColor = [UIColor clearColor];
     self.name.textColor = [UIColor whiteColor];
@@ -263,7 +272,6 @@ const float originalEmbiggenScale = 0;
     //___this had been located after the constraints, but that seems wrong.
     [self addSubview:self.name];
 
-    
     //start here
     
     //add constraints for the nameText label to move with the territory when selected
@@ -280,23 +288,19 @@ const float originalEmbiggenScale = 0;
     
     //end here...
     
-    
     //hand a copy of the label to the superview (myMapview) to add the label to the nameTextView property
     //stupidly, I can't just copy the label but have the make it from scratch... with a different frame 
     SPYNameTextLabel* nameCopy = [[SPYNameTextLabel alloc] initWithFrame:self.frame];
     
     //if the db result has an object, use it to derive the name other stats
     if ([fetchResult count] > 0){
-        
         Territories* territory = [fetchResult objectAtIndex:0];
         nameCopy.text = [territory name];
         nameCopy.font = [UIFont systemFontOfSize:12.0];
         nameCopy.nameLabelX = [territory nameLabelX];
         nameCopy.nameLabelY = [territory nameLabelY];
         nameCopy.territoryShortName = [territory shortName];
-        
     } else {
-        
         nameCopy.text = @"Database Error";
         nameCopy.nameLabelY = @0;
         nameCopy.nameLabelX = @0;
@@ -315,13 +319,12 @@ const float originalEmbiggenScale = 0;
     //set label as hidden
     self.name.alpha = 0.0;
 
-
-    
     NSNumber* isSeaNumber = [NSNumber numberWithInt:self.isSea];
     
     //add armies as a subview
     //but only if core data indicates that the territory has armies or navies
-    if ([self.armies integerValue] > 0){
+
+    if ([armiesForReal integerValue] > 0){
         
         UIColor* unitColor = [[SPYGlobalConstants getSpyColorBasedOnNationIndex:self.currentNationIndex] objectForKey:@"color"];
         NSString* unitColorName = [[SPYGlobalConstants getSpyColorBasedOnNationIndex:self.currentNationIndex] objectForKey:@"colorName"];
@@ -330,28 +333,22 @@ const float originalEmbiggenScale = 0;
         NSDictionary* thisDicTooth = [NSDictionary dictionaryWithObjectsAndKeys:
                                     unitColor, @"color",
                                     unitColorName, @"colorName",
-                                    self.armies, @"number",
+                                    armiesForReal, @"number",
                                     self.currentNationIndex, @"nationIndex",
                                     isSeaNumber, @"isSea",
                                     nil];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"addArmiesInitial" object:self userInfo:thisDicTooth];
-        
     }
 }
 
-
 #pragma mark - update me and the data store
-
 -(void)updateArmies:(NSNumber*)myArmies Nation:(NSNumber*)myNation{
-    
     //allow either of the parameters to be nil to keep the current value
     if (myArmies == nil){
-        
-        myArmies = self.armies;
+        myArmies = [self.gameBoardDelegate getArmiesForTerritory:[self.name text]];
     }
     
     if (myNation == nil){
-        
         myNation = self.currentNationIndex;
     }
     
@@ -362,25 +359,19 @@ const float originalEmbiggenScale = 0;
     if (myArmies && myNation){
         
         //update local ivar
-        self.armies = myArmies;
+        [self.gameBoardDelegate setArmies:myArmies ForTerritory:[self.name text]];
         self.currentNationIndex = myNation;
         
         NSLog(@"%@ is updated with these armies: %@", [self class], myArmies);
         
         //update datastore
         [sharedChangeData updateTerritory:self Armies:myArmies Nation:myNation MatchID:self.matchID];
-        
     } else {
-        
         NSLog(@"spyterritorytemplate could not update armies nation");
     }
 }
 
-
-
 #pragma mark - Tap on territory action
-
-
 -(IBAction)tapped:(id)sender{
   
     //if territory is in background, in doesn't respond so that only one can be selected
@@ -528,7 +519,6 @@ const float originalEmbiggenScale = 0;
         [self.name setAlpha:1.0];
         
         state = @"big";
-        
     } else {
         
         //enshrinken
@@ -633,8 +623,6 @@ const float originalEmbiggenScale = 0;
 
 
 -(void)armyMovementEnded:(NSNotification*)note{
-        
-    //obtain original and destination point from the long press gesture
     SPYBrigadeViewController* senderBrigade = [note object];
     
     NSDictionary* thisDic = [note userInfo];
@@ -646,39 +634,29 @@ const float originalEmbiggenScale = 0;
     CGPoint newDestinyPoint = [[self superview] convertPoint:destinationPoint toView:self];
 
     
-    //if the touch is in the drawing path...
+    // if the touch-up is in the drawing path...
     BOOL origPath = [self.path containsPoint:newOGPoint];
     BOOL destPath = [self.path containsPoint:newDestinyPoint];
     
 //    NSLog(@"destination point x:%5.2f  y:%5.2f", newDestinyPoint.x, newDestinyPoint.y);
     
     if (origPath && destPath){
-        
         //brigade didn't move from the territory
         //return the brigade collection view to the center of the territory
         [[NSNotificationCenter defaultCenter] postNotificationName:@"dismissArmiesMove" object:senderBrigade userInfo:nil];
         
         //the label will be visible. make invisible if it is meant to be
         if (self.inBackground && (name.alpha > 0.0)){
-            
             [UIView animateWithDuration:standardFadeDuration animations:^{
-                
                 [self.name setAlpha:0.0];
             }];
         }
-        
-        
     }else if (origPath && !destPath) {
-        
         //nothing to see here
-        
+        self.isSplit = NO;
         
     }else if (destPath && !origPath) {
-        
-//        NSLog(@"this territory nationIndex:%@, armies:%@", self.nationIndex, self.armies);
-//        NSLog(@"senderBrigade nationIndex:%@", senderBrigade.nationIndex);
-        
-        
+        self.isSplit = NO;
         //match navys to sea and armies to land
         BOOL terraTest;
         
@@ -688,80 +666,64 @@ const float originalEmbiggenScale = 0;
             terraTest = YES;
         }
         
-        //dismiss if the destination is a sea or if the battle drill flag is raised
+        // dismiss if the destination territory type is a mismatch with originating type
+        // or if the battle drill flag is raised
+        // return the brigade collection view to the center of the territory
         if (terraTest || self.isUnderBattleDrill){
-            
-            //return the brigade collection view to the center of the territory
             [[NSNotificationCenter defaultCenter] postNotificationName:@"dismissArmiesMove" object:senderBrigade userInfo:nil];
-            
         }else{
+            // add armies to the terr property and db attribute
+            // send note to tell WorldMap about change
             
-            //territory is the destination of the brigade movement
-            //add armies to the terr property and db attribute
-            //send note to tell WorldMap about change
+            NSNumber *queueToAttack;
             
-            NSLog(@"destination territory: %@", [self class]);
-            
-            
-            //______declares whether the brigade is set to attack or move
-            //if the destination is the player's nation or if the destination is empty of armies
-            if ([thisNationIndex isEqualToNumber:self.currentNationIndex] || ([self.armies integerValue] < 1)){
+            // if the destination is the player's nation or if the destination is empty of armies
+            if ([thisNationIndex isEqualToNumber:self.currentNationIndex] || ([[self.gameBoardDelegate getArmiesForTerritory:[self.name text]] integerValue] < 1)){
                 
                 NSLog(@"same nation or empty nation");
                 
                 //update the territories nationIndex, color and colorName
                 self.currentNationIndex = thisNationIndex;
-                //____________on second thought, I think colorName and startColor should be the permanent settings
-//                self.colorName = senderBrigade.brigadeColorName;
-//                self.startColor = senderBrigade.brigadeColor;
                 
-                //*********__________move this notifcation to the brigade, inside the accept armies move method
-                //send note to spyworldmapview to add armies to the territory with the appropriate color and number
+                //*********__________ consider moving this notifcation to the brigade, inside the accept armies move method
+                // send note to spyworldmapview to add armies to the territory with the appropriate color and number
                 NSDictionary* thisDicToo = [NSDictionary dictionaryWithObjectsAndKeys:
-//                                            self.startColor, @"color",
-//                                            self.armies, @"number",
                                             senderBrigade, @"senderBrigade",
                                             nil];
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"armiesMoveToDestination" object:self userInfo:thisDicToo];
                 //**********___________
                 
-                //and send note to the initial brigadeViewController to accept the army move
-                NSDictionary *thisOtherDic = [NSDictionary dictionaryWithObjectsAndKeys:
-                                              senderBrigade, @"senderBrigade",
-                                             [NSNumber numberWithBool:0], @"queToAttack",
-                                              nil];
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"acceptArmiesMove" object:self userInfo:thisOtherDic];
-                
+                queueToAttack = [NSNumber numberWithBool:0];
             } else {
-                
                 NSLog(@"ATTACK!");
                 
-                //and send note to the initial brigadeViewController to accept the army move
-                NSDictionary *thisOtherDic = [NSDictionary dictionaryWithObjectsAndKeys:
-                                              senderBrigade, @"senderBrigade",
-                                              [NSNumber numberWithBool:1], @"queToAttack",
-                                              nil];
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"acceptArmiesMove" object:self userInfo:thisOtherDic];
-                
-                
-                //send note to battleDrillViewController to show the battle drill
-                //also received by all territories to raise flag
+                // send note to battleDrillViewController to show the battle drill
+                // also received by all territories to raise flag
                 NSDictionary* thisGreatDic = [NSDictionary dictionaryWithObjectsAndKeys:
-                                              self.armies, @"defenderArmies",
+                                              [self.gameBoardDelegate getArmiesForTerritory:[self.name text]], @"defenderArmies",
                                               senderBrigade.numberOfArmies, @"attackerArmies",
                                               self.index, @"defenderIndex",
                                               self.name, @"defenderName",
                                               self.currentNationIndex, @"defenderNationIndex",
                                               senderBrigade.nationIndex, @"attackerNationIndex",
-                                              [NSValue valueWithCGPoint:senderBrigade.originalCenter], @"attackerOriginalCenter",
+                                              [NSValue valueWithCGPoint:senderBrigade.originalPosition], @"attackerOriginalCenter",
                                               [NSValue valueWithCGPoint:self.brigadeCenter], @"defenderOriginalCenter",
                                               nil];
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"showBattleDrill" object:self userInfo:thisGreatDic];
                 
+                queueToAttack = [NSNumber numberWithBool:1];
             }
+            // Tell brigade to accept the move
+            NSDictionary *thisOtherDic = [NSDictionary dictionaryWithObjectsAndKeys:
+                                          senderBrigade, @"senderBrigade",
+                                          queueToAttack, @"queToAttack",
+                                          nil];
+            
+            NSNotification *note = [NSNotification notificationWithName:@"acceptArmiesMove" object:self userInfo:thisOtherDic];
+            [senderBrigade acceptArmiesMove:note];
         }
         
-        //the label will be visible. make invisible if it is meant to be
+        // the label will be visible. make invisible if it is meant to be
         if (self.inBackground && (name.alpha > 0.0)){
             
             [UIView animateWithDuration:standardFadeDuration animations:^{
@@ -770,14 +732,40 @@ const float originalEmbiggenScale = 0;
             }];
         }
     }
+}
+
+-(void)splitArmiesWithCenterPoint:(CGPoint)centerPoint {
+    NSLog(@"======= %@ receives tap notification, and I have %@ armies, and isSplit: %d ======", [self.name text], [self.gameBoardDelegate getArmiesForTerritory:[self.name text]], self.isSplit);
     
+    // don't split if less than 2 armies or already split
+    if ([[self.gameBoardDelegate getArmiesForTerritory:[self.name text]] intValue] > 1) {
+        if (self.isSplit == NO) {
+            self.isSplit = YES;
+            
+            int newSplitArmies = [self.armiesSplit intValue] + 1;
+            self.armiesSplit = [NSNumber numberWithInt:newSplitArmies];
+            
+            // message delegate / WorldMap to create a new brigade
+            // center brigades on alternate coordinates
+            
+            NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+            NSDictionary *userInfo = @{
+                @"originalCenter": [NSValue valueWithCGPoint:self.brigadeCenterOriginalWithSplit],
+                @"newCenter": [NSValue valueWithCGPoint: self.brigadeCenterSplit]
+            };
+            [defaultCenter postNotificationName:@"splitArmies" object:self userInfo:userInfo];
+            
+        } else {
+            
+            // message GameBoardListener / WorldMap to
+            // move a unit from one to other based on current center ?
+        }
+        
+    }
 }
 
 
-
-
 #pragma mark - Fade in and out
-
 
 -(void)fadeOut:(NSNotification*)note{
     

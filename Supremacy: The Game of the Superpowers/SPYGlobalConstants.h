@@ -24,6 +24,8 @@ extern const float SPYNavyUnitHeight;
 extern const int SPYTableTopMatchTag;
 extern const int SPYGKMatchTag;
 
+extern NSString const *ARMIES_MOVE_TO_DESTINATION;
+
 +(UIColor*)getSpyColor:(NSString*)colorName;
 +(NSDictionary*)getSpyColorBasedOnNationIndex:(NSNumber*)nationIndex;
 

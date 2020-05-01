@@ -90,8 +90,9 @@
 #import "SPYTimorSea.h"
 #import "SPYSharkBay.h"
 #import "SPYTasmanSea.h"
+#import "SPYGameBoardListener.h"
 
-
+#import "SPYArmyGetterSetter.h"
 
 @interface SPYWorldMapView : UIView <UIScrollViewDelegate>
 
@@ -102,10 +103,14 @@
 @property (strong, nonatomic) NSMutableSet* setOfBrigades;
 @property (strong, nonatomic) NSMutableSet* setOfRemovedBrigades;
 
+@property (strong, nonatomic) SPYGameBoardListener<SPYArmyGetterSetter> *gameBoardListener;
 
 -(void)initialSetup;
 -(void)tapped:(NSNotification*)note;
 -(void)addTerritoryLabel:(NSNotification*)label;
 -(void)resetWorldMap;
+
+// GameBoardListenerDelegate methods
+-(void)addArmiesInitial:(NSNotification*)note;
 
 @end

@@ -18,19 +18,15 @@
 @synthesize managedObjectContext;
 
 + (SPYChangeData*) sharedInstance {
-    
     static SPYChangeData* myInstance = nil;
     if (!myInstance) {
-        
         myInstance = [[SPYChangeData alloc] init];
     }
-    
     return myInstance;
 }
 
 
 #pragma mark - match methods
-
 -(void)addNewMatch:(SPYMatch*)newMatch{
     
     Match* thisMatch = (Match*)[NSEntityDescription insertNewObjectForEntityForName:@"Match" inManagedObjectContext:managedObjectContext];
@@ -48,20 +44,13 @@
     
     NSError* error = nil;
     if (![managedObjectContext save:&error]){
-        
         NSLog(@"spychangedata > addNewMatch : %@", error);
     }
 }
 
 
-
-
-
-
 #pragma mark - territory methods
-
 -(void)updateTerritory:(id)territory Armies:(NSNumber*)armies Nation:(NSNumber*)nation MatchID:(NSString*)matchID{
-    
     
     NSNumber* terrIndex = [(SPYTerritoryTemplate*) territory index];
         
@@ -97,7 +86,6 @@
     //save the managed object context - commites changes
     NSError* error2 = nil;
     if (![managedObjectContext save:&error2]) NSLog(@"this is the error: %@", error2);
-
 }
 
 
@@ -139,9 +127,7 @@
 }
 
 
-
 -(NSInteger)getCountOfNations{
-    
     //no need to create the entity description
     
     //create a fetch reqest. no predicate means that it returns all rows
@@ -151,10 +137,9 @@
     NSError* error = nil;
     NSArray* fetchResult = [managedObjectContext executeFetchRequest:request error:&error];
     
-    NSLog(@"count of nationss: %u", [fetchResult count]);
+    NSLog(@"count of nations: %lu", (unsigned long)[fetchResult count]);
     
     return [fetchResult count];
-    
 }
 
 

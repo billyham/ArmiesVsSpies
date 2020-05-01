@@ -123,7 +123,6 @@
 @end
 
 
-
 @implementation SPYBattleDrillViewController
 
 @synthesize withdrawButton;
@@ -144,8 +143,6 @@
 @synthesize isVisible;
 
 #pragma mark - load
-
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -156,8 +153,6 @@
 }
 
 -(void)loadView{
-    
-
     //register for notifications
     NSNotificationCenter* nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self selector:@selector(showBattleDrill:) name:@"showBattleDrill" object:nil];
@@ -205,29 +200,21 @@
     
     UITapGestureRecognizer* withdrawGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(withdrawTrigger:)];
     [self.withdrawButton addGestureRecognizer:withdrawGesture];
-    
 }
 
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     //add subviews
     [self.view addSubview:self.withdrawButton];
     [self.view addSubview:self.attackButton];
     [self.view addSubview:self.attackerLabel];
     [self.view addSubview:self.defenderLabel];
-    
-
 }
 
-
 #pragma mark - show and hide
-
-
 -(void)showBattleDrill:(NSNotification*)note{
-    
     NSDictionary* thisGreatDic = [note userInfo];
     
     self.defenderArmies = [thisGreatDic objectForKey:@"defenderArmies"];
@@ -328,7 +315,7 @@
         //*****if an additional attacker army joins the battle
         
         //add this particular attacking brigade to the already existing brigade
-        self.attackerArmies = [NSNumber numberWithInt: ([self.attackerArmies integerValue] + [thisAttackerArmies integerValue])];
+        self.attackerArmies = [NSNumber numberWithInt: ([self.attackerArmies integerValue] + [thisAttackerArmies intValue])];
         
         self.attackerLabel.text = [self.attackerArmies stringValue];
     }
@@ -373,19 +360,7 @@
 
 
 #pragma mark - attack and withdraw buttons
-
-
 -(IBAction)attackTrigger:(id)sender{
-    
-    
-        
-//    //_______tell self to hide the battle drill view
-//    [[NSNotificationCenter defaultCenter] postNotificationName:@"hideBattleDrill" object:nil userInfo:nil];
-//    
-//    //tell brigade to dismisss the attacking armies
-//    [[NSNotificationCenter defaultCenter] postNotificationName:@"dismissArmiesMove" object:self userInfo:nil];
-
-        
     //calculate the number of dice for attacker and defender
 //    int attackDice = 1;
 //    int defendDice = 1;
@@ -400,30 +375,21 @@
     
     //limit the maximum kill to the value of the opponent armies quantity
     if (attackKill > [self.defenderArmies integerValue]){
-        
-        attackKill = [self.defenderArmies integerValue];
+        attackKill = [self.defenderArmies intValue];
     }
     
-    
-    if (defendKill > [self.attackerArmies integerValue]){
-        
-        defendKill = [self.attackerArmies integerValue];
+    if (defendKill > [self.attackerArmies intValue]){
+        defendKill = [self.attackerArmies intValue];
     }
-    
-    
     
     //subtract from the total attacker and defender armies
-    self.attackerArmies = [NSNumber numberWithInt:([self.attackerArmies integerValue] - defendKill)];
-    self.defenderArmies = [NSNumber numberWithInt:([self.defenderArmies integerValue] - attackKill)];
+    self.attackerArmies = [NSNumber numberWithInt:([self.attackerArmies intValue] - defendKill)];
+    self.defenderArmies = [NSNumber numberWithInt:([self.defenderArmies intValue] - attackKill)];
     
     self.attackerLabel.text = [self.attackerArmies stringValue];
     self.defenderLabel.text = [self.defenderArmies stringValue];
 
-    
-    
-
     //determine if the battle is over when a combatent is reduced to 0 -- both are mutually possible results
-    
     
     //****if defender takes a loss of any armies
     if (attackKill > 0){
@@ -440,12 +406,9 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:@"brigadeBattleLoss" object:self userInfo:defenderLossDic];
     }
     
-    
     //****if attacker takes a loss of any armies
     if (defendKill > 0){
-        
         //_____kill in the same order as they were added???
-        
         int tempDefendKill = defendKill;
         int loopThroughArrayToDeleteAttackers = 0;
         
@@ -456,7 +419,7 @@
             if (tempDefendKill > 0){
                 
                 //get the attacker value as int
-                int thisTotalAttackerValue = [[combinedArray objectAtIndex:0] integerValue];
+                int thisTotalAttackerValue = [[combinedArray objectAtIndex:0] intValue];
                 
                 
                 int thisHereDefendKill = tempDefendKill;
@@ -497,12 +460,7 @@
             
             [self.attackerStack removeObjectAtIndex:0];
         }
-        
-        
     }
-    
-    
-    
     
     //*****if attacker is destroyed
     if ([self.attackerArmies integerValue] < 1){
@@ -510,24 +468,20 @@
         //close the battle drill
         //tell self to hide the battle drill view
         [[NSNotificationCenter defaultCenter] postNotificationName:@"hideBattleDrill" object:nil userInfo:nil];
-        
-        //________tell brigade to dismisss the attacking armies
-//        [[NSNotificationCenter defaultCenter] postNotificationName:@"dismissArmiesMove" object:self userInfo:nil];
-
     }
     
-    //****if defender is destroyed
+    // defender is destroyed
     if ([self.defenderArmies integerValue] < 1){
 
-        //if the attacker has victories armies...
+        // the attacker has victorious armies...
         if ([self.attackerArmies integerValue] > 0){
             
-            //move the attacker(s) to the destination territory
+            // move the attacker(s) to the destination territory
 
-            //update the territories nationIndex, color and colorName
+            // update the territories nationIndex, color and colorName
             self.defenderRepresentation.nationIndex = attackerNationIndex;
                         
-            //and send note to the initial brigadeViewController to accept the army move
+            // and send note to the initial brigadeViewController to accept the army move
             NSDictionary *thisOtherDic = [NSDictionary dictionaryWithObjectsAndKeys:
                                           @"BattleDrill", @"senderBrigade",
                                           [NSNumber numberWithBool:0], @"queToAttack",
@@ -535,34 +489,28 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:@"acceptArmiesMove" object:self.defenderRepresentation userInfo:thisOtherDic];
         }
         
-        //close the battle drill, make sure to do this last as the hide method clears local ivars!
+        // close the battle drill, make sure to do this last as the hide method clears local ivars!
         if (self.isVisible){
             
-            //tell self to hide the battle drill view
+            // tell self to hide the battle drill view
             [[NSNotificationCenter defaultCenter] postNotificationName:@"hideBattleDrill" object:nil userInfo:nil];
         }
     }
-
-    
     //if no victor, continue the battle drill
     //offer a choice to continue or withdraw
 }
 
 
 -(IBAction)withdrawTrigger:(id)sender{
-        
     //______tell self to hide the battle drill view
     [[NSNotificationCenter defaultCenter] postNotificationName:@"hideBattleDrill" object:nil userInfo:nil];
 
     //tell brigade to dismisss the attacking armies
     [[NSNotificationCenter defaultCenter] postNotificationName:@"dismissArmiesMove" object:self userInfo:nil];
-    
 }
 
 
 #pragma mark - memory warning
-
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

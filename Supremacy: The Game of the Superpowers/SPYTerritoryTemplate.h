@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "SPYNameTextLabel.h"
-#import "SPYBrigadeViewController.h"
 
+#import "SPYArmyGetterSetter.h"
 
-@interface SPYTerritoryTemplate : UIView
+@interface SPYTerritoryTemplate : UIView {
+    __weak id<SPYArmyGetterSetter> gameBoardDelegate;
+}
+
+@property (weak, nonatomic) id<SPYArmyGetterSetter> gameBoardDelegate;
 
 @property (strong, nonatomic) NSManagedObjectContext* managedObjectContext;
 @property (strong, nonatomic) NSNumber* index;
@@ -20,7 +24,6 @@
 @property CGPoint brigadeCenter;
 @property (strong, nonatomic) SPYNameTextLabel* name;
 @property (strong, nonatomic) UIBezierPath* path;
-@property (strong, nonatomic) NSNumber* armies;
 @property (strong, nonatomic) NSString* colorName;
 @property (strong, nonatomic) UIColor* startColor;
 @property (strong, nonatomic) NSNumber* nationIndex;
@@ -28,16 +31,15 @@
 @property BOOL isSea;
 @property (strong, nonatomic) NSString* matchID;
 
-//@property (strong, nonatomic) SPYBrigadeViewController* brigadeViewController;
-
+@property CGPoint brigadeCenterOriginalWithSplit;
+@property CGPoint brigadeCenterSplit;
 
 
 -(IBAction)tapped:(id)sender;
 -(void)firstActivationWithMatchID:(NSString*)matchID;
 -(void)updateArmies:(NSNumber*)myArmies Nation:(NSNumber*)myNation;
-
+-(void)splitArmiesWithCenterPoint:(CGPoint)centerPoint;
 
 +(NSDictionary*)defineColors;
-
 
 @end

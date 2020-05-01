@@ -10,19 +10,28 @@
 #import "SPYArmyView.h"
 #import "SPYNavyView.h"
 
-@interface SPYGamePieceViewController : UICollectionViewController
+#import "SPYArmyGetterSetter.h"
+
+@interface SPYGamePieceViewController : UICollectionViewController {
+    __weak id<SPYArmyGetterSetter> gameBoardDelegate;
+}
+@property (weak, nonatomic) id<SPYArmyGetterSetter> gameBoardDelegate;
 
 @property (strong, nonatomic) NSNumber* numberOfArmies;
 @property (strong, nonatomic) UIColor* brigadeColor;
 @property (strong, nonatomic) NSString* brigadeColorName;
 @property (strong, nonatomic) NSNumber* nationIndex;
-@property CGPoint myCenter;
-@property CGPoint originalCenter;
+
+@property CGPoint currentPosition;
+@property CGPoint originalPosition;
 @property BOOL invisibleCellFlag;
 @property BOOL isNavyFlag;
 
 
 -(void)setInitialTerritory:(id)terr;
 -(void)setUnderneathTerritoryFromElsewhere:(id)terr;
+-(void)moveToPoint:(CGPoint)point;
+
+-(void)acceptArmiesMove:(NSNotification*)note;
 
 @end

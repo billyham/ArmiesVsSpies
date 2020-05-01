@@ -21,6 +21,7 @@ const float SPYNavyUnitHeight = 34.0;
 const int SPYTableTopMatchTag = 0;
 const int SPYGKMatchTag = 1;
 
+NSString const *ARMIES_MOVE_TO_DESTINATION = @"armiesMoveToDestination";
 
 +(NSDictionary*)getSpyColorBasedOnNationIndex:(NSNumber*)nationIndex{
     

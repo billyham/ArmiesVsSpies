@@ -146,6 +146,7 @@
 		43F8159016537C5000D86CBB /* Supremacy__The_Game_of_the_SuperpowersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F8158F16537C5000D86CBB /* Supremacy__The_Game_of_the_SuperpowersTests.m */; };
 		43F8159D16537FE200D86CBB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F8159C16537FE200D86CBB /* CoreLocation.framework */; };
 		43FFC3BC16991D130091521F /* SPYArmyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 43FFC3BB16991D130091521F /* SPYArmyView.m */; };
+		543AD6E723C4411600C6C86F /* SPYGameBoardListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 543AD6E623C4411600C6C86F /* SPYGameBoardListener.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -418,6 +419,9 @@
 		43F8159C16537FE200D86CBB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		43FFC3BA16991D130091521F /* SPYArmyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPYArmyView.h; sourceTree = "<group>"; };
 		43FFC3BB16991D130091521F /* SPYArmyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPYArmyView.m; sourceTree = "<group>"; };
+		5406ED7D245BEABF00C913FE /* SPYArmyGetterSetter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPYArmyGetterSetter.h; sourceTree = "<group>"; };
+		543AD6E523C4411600C6C86F /* SPYGameBoardListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPYGameBoardListener.h; sourceTree = "<group>"; };
+		543AD6E623C4411600C6C86F /* SPYGameBoardListener.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPYGameBoardListener.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -780,6 +784,7 @@
 		43F8156616537C4F00D86CBB /* Armies vs Spies */ = {
 			isa = PBXGroup;
 			children = (
+				5406ED7C245BEA6800C913FE /* protocols */,
 				43F8156F16537C4F00D86CBB /* SPYAppDelegate.h */,
 				43F8157016537C4F00D86CBB /* SPYAppDelegate.m */,
 				43CE1C1E16C35939008D0CDE /* SPYGlobalConstants.h */,
@@ -797,6 +802,8 @@
 				43B4BD281664CDE8003D723D /* SPYRootViewControllerIPadViewController.m */,
 				430978BC1659D8CF002CDF38 /* SPYGameBoardIPadViewController.h */,
 				430978BD1659D8CF002CDF38 /* SPYGameBoardIPadViewController.m */,
+				543AD6E523C4411600C6C86F /* SPYGameBoardListener.h */,
+				543AD6E623C4411600C6C86F /* SPYGameBoardListener.m */,
 				430978BE1659D8CF002CDF38 /* SPYGameBoardIPadViewController.xib */,
 				43156AA0165A065400DCC26C /* SPYWorldMapView.h */,
 				43156AA1165A065400DCC26C /* SPYWorldMapView.m */,
@@ -850,6 +857,14 @@
 				43F8158B16537C5000D86CBB /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5406ED7C245BEA6800C913FE /* protocols */ = {
+			isa = PBXGroup;
+			children = (
+				5406ED7D245BEABF00C913FE /* SPYArmyGetterSetter.h */,
+			);
+			name = protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -912,6 +927,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 43F8154F16537C4F00D86CBB;
@@ -1089,6 +1105,7 @@
 				43BE9E8E171FEAE90059D71E /* SPYMatchesPickerCllctnVwCntrllr.m in Sources */,
 				43BE9E91171FEC140059D71E /* SPYMatchViewController.m in Sources */,
 				43D41645172BCA3000301363 /* Match.m in Sources */,
+				543AD6E723C4411600C6C86F /* SPYGameBoardListener.m in Sources */,
 				435B271D1738D4EB00AD3895 /* Spies.m in Sources */,
 				435B27201738D4EB00AD3895 /* Territories.m in Sources */,
 			);
@@ -1155,7 +1172,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "Armies vs Spies";
 				SDKROOT = iphoneos;
@@ -1178,7 +1195,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PRODUCT_NAME = "Armies vs Spies";
 				SDKROOT = iphoneos;
@@ -1194,7 +1211,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Supremacy: The Game of the Superpowers/Armies vs Spies-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Supremacy: The Game of the Superpowers/Armies vs Spies-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.David-Vincent-Hanagan.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "Armies vs Spies";
 				WRAPPER_EXTENSION = app;
@@ -1208,7 +1225,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Supremacy: The Game of the Superpowers/Armies vs Spies-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Supremacy: The Game of the Superpowers/Armies vs Spies-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.David-Vincent-Hanagan.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "Armies vs Spies";
 				WRAPPER_EXTENSION = app;

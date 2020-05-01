@@ -10,19 +10,13 @@
 #import "SPYGlobalConstants.h"
 #import "SPYBrigadeViewLayout.h"
 
-
-
 @implementation SPYBrigadeViewController
-
-
-
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-
     }
     return self;
 }
@@ -30,12 +24,9 @@
 
 - (void)viewDidLoad
 {
-
     [super viewDidLoad];
-    
     self.isNavyFlag = NO;
 }
-
 
 
 -(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -53,9 +44,7 @@
         
         //make the last army invisible
 //        thisArmy.alpha = 0.01;
-        
     } else {
-        
         //assign the color to the armies property
         thisArmy.baseColor = self.brigadeColor;
     }
@@ -68,9 +57,6 @@
     
     return cell;
 }
-
-
-
 
 
 - (void)didReceiveMemoryWarning

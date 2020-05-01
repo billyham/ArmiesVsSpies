@@ -24,9 +24,7 @@
 @synthesize matchControl;
 
 
-
 #pragma mark - at launch
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

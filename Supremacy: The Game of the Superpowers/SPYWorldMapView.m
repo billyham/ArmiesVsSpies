@@ -15,10 +15,9 @@
 #import "SPYBrigadeViewLayout.h"
 #import "SPYGlobalConstants.h"
 
-@interface SPYWorldMapView ()
+@interface SPYWorldMapView () <SPYGameBoardListenerDelegate>
 
 @property (strong, nonatomic) NSMutableDictionary* dicNameLabels;
-
 @property (strong, nonatomic) UIImageView* reductionCircleView;
 
 @end
@@ -35,6 +34,8 @@
 @synthesize dicNameLabels;
 @synthesize reductionCircleView;
 
+@synthesize gameBoardListener;
+
 static bool hiddenNameTextFromZoomFlag;
 static bool territoryIsSelectedFlag;
 static float currentScale;
@@ -46,9 +47,7 @@ static float currentScale;
 {
     self = [super initWithFrame:frame];
     if (self) {
-        
         self.dicNameLabels = [NSMutableDictionary dictionaryWithCapacity:1];
-        
     }
     return self;
 }
@@ -71,18 +70,12 @@ static float currentScale;
     //get notified when an army is initially added to a territory
     [nc addObserver:self selector:@selector(addArmiesInitial:) name:@"addArmiesInitial" object:nil];
     
-    //get notified when an army is moved out of a territory... no point currently
-//    [nc addObserver:self selector:@selector(armiesMoveFromOriginal:) name:@"armiesMoveFromOriginal" object:nil];
-    
-    //get notified when an army moves into a territory
-    [nc addObserver:self selector:@selector(armiesMoveToDestination:) name:@"armiesMoveToDestination" object:nil];
-    
     //get notified by a brigadeViewController when it has been destroyed in battle and needs to be removed from the set
     [nc addObserver:self selector:@selector(removeBrigadeFromSet:) name:@"removeBrigadeFromSet" object:nil];
     
     //reduction circle notifications
-    [nc addObserver:self selector:@selector(createReductionCircle:) name:@"createReductionCircle" object:nil];
-    [nc addObserver:self selector:@selector(destroyReductionCircle:) name:@"destroyReductionCircle" object:nil];
+//    [nc addObserver:self selector:@selector(createReductionCircle:) name:@"createReductionCircle" object:nil];
+//    [nc addObserver:self selector:@selector(destroyReductionCircle:) name:@"destroyReductionCircle" object:nil];
     
     //initialize hiddenNameTextFlag
     hiddenNameTextFromZoomFlag = NO;
@@ -93,22 +86,26 @@ static float currentScale;
     //set the initial scale factor
     currentScale = 0.51;
     
+    self.gameBoardListener.delegate = self;
 }
 
 
-
+#pragma mark - SPYGameBoardListenerDelegate methods
+//-(void)moveArmies:(int)armies toDestination:(SPYTerritoryTemplate *)territory{
+//    NSLog(@"===== delegate method moveArmies:toDestination: fired =======");
+//}
 
 
 #pragma mark - Armies setup and movement
 
 -(void)addArmiesInitial:(NSNotification*)note{
-        
     NSDictionary* dicFromNote = [note userInfo];
     
     SPYTerritoryTemplate* thisTerritory = [note object];
     
     //obtain the number of armies from the note
     NSNumber* armiesNumber = [dicFromNote objectForKey:@"number"];
+    NSLog(@"****************** ---------- armies for game piece: %@", armiesNumber);
     
     //derive the appropriate color, colorName and nationIndex for the army
     UIColor* myColor = [dicFromNote objectForKey:@"color"];
@@ -118,8 +115,6 @@ static float currentScale;
     NSLog(@"spyworldmap > addArmiesInitial : territory %@, color: %@, colorName: %@, nation index: %@",
           [thisTerritory class], myColor, myColorName, myNationIndex);
     
-    //______why isn't this working?!?!?!?!? result is NULL
-//    NSNumber* myIsSea = [dicFromNote objectForKey:@"isSea"];
     NSNumber* myIsSea = [NSNumber numberWithBool: thisTerritory.isSea];
     
     CGPoint thisPoint = CGPointMake(thisTerritory.frame.origin.x, thisTerritory.frame.origin.y);
@@ -128,25 +123,20 @@ static float currentScale;
     SPYBrigadeViewLayout* thisBrigadeLayout = [[SPYBrigadeViewLayout alloc] initWithGamePiece:thisTerritory.isSea];
     
     //set the layout's armies ivar
-    thisBrigadeLayout.armies = [armiesNumber integerValue];
+    thisBrigadeLayout.armies = [armiesNumber intValue];
     
     //declare the game piece before deciding which kind
     SPYGamePieceViewController* brigadeViewController;
         
     if ([myIsSea boolValue]){
-        
         brigadeViewController = [[SPYFleetViewController alloc]
                                  initWithCollectionViewLayout:thisBrigadeLayout];
-        
-//        brigadeViewController.isNavyFlag = YES;
-        
     }else{
     
         brigadeViewController = [[SPYBrigadeViewController alloc]
                                                        initWithCollectionViewLayout:thisBrigadeLayout];
-        
-//        brigadeViewController.isNavyFlag = NO;
     }
+    brigadeViewController.gameBoardDelegate = self.gameBoardListener;
 
     //set the size of the brigade collectionview (using the calculation from the layout)
     CGSize brigadeLayoutSize = [thisBrigadeLayout collectionViewContentSize];
@@ -166,8 +156,8 @@ static float currentScale;
     brigadeViewController.collectionView.delegate = brigadeViewController;
     
     //set the brigadeViewController's CGPoint center property
-    brigadeViewController.myCenter = thisTerritory.brigadeCenter;
-    brigadeViewController.originalCenter = thisTerritory.brigadeCenter;
+    brigadeViewController.currentPosition = thisTerritory.brigadeCenter;
+    brigadeViewController.originalPosition = thisTerritory.brigadeCenter;
     
     //assign color and nationIndex to the brigade collection view property
     brigadeViewController.brigadeColor = myColor;
@@ -217,46 +207,18 @@ static float currentScale;
     
 }
 
-
-//-(void)armiesMoveFromOriginal:(NSNotification*)note{
-//        
-//    SPYTerritoryTemplate* thisTerritory = [note object];
-//    
-//    //______doesn't confirm that the movement has been accepted. when dismissed
-//    
-//    //adjust origin armies ivar
-//    [thisTerritory updateArmies:[NSNumber numberWithInt:0] Nation:thisTerritory.nationIndex];
-//    
-//}
-
-
--(void)armiesMoveToDestination:(NSNotification*)note{
+-(void)armiesMoveToDestinationWithNewArmies:(int)newArmiesQuantity
+                               formerArmies:(int)formerArmiesQuantity
+                                     origin:(CGPoint)brigadeCenter
+                              senderBrigage:(SPYBrigadeViewController *)senderBrigade{
     
-    SPYTerritoryTemplate* thisTerritory = [note object];
-    
-    //derive senderBrigade object
-    SPYBrigadeViewController* senderBrigade = [[note userInfo] objectForKey:@"senderBrigade"];
-    
-    
-    //***update the MODEL by adding this brigade's armies to the value and saving it***
-    int formerArmiesQuantity = [thisTerritory.armies integerValue];
-    
-    NSLog(@"senderBrigade's armies: %u  territory's former armies: %u",[senderBrigade.numberOfArmies integerValue], formerArmiesQuantity );
-    
-    int newArmiesQuantity = [senderBrigade.numberOfArmies integerValue] + formerArmiesQuantity;
-    
-    //adjust destination territory armies ivar, including an update to the persistent store
-    [thisTerritory updateArmies:[NSNumber numberWithInt:newArmiesQuantity] Nation:senderBrigade.nationIndex];
-    
-   
     //****delete any existing brigade associated with this destination territory
     SPYBrigadeViewController* brigadeToDelete;
     
     //dismiss any existing bridageViewController ivar for the territory
     for (SPYBrigadeViewController* thisBrigade in setOfBrigades){
-        
         //compare centers to find a brigade that matches the center point of the destination territory
-        if (CGPointEqualToPoint(thisBrigade.myCenter, thisTerritory.brigadeCenter)){
+        if (CGPointEqualToPoint(thisBrigade.currentPosition, brigadeCenter)){
             
             //_____*********  YES, this confirms that this collectionView is the zombie object!!!!!
 //            NSLog(@"this is the memory address: %@", thisBrigade.collectionView);
@@ -272,15 +234,12 @@ static float currentScale;
             [thisBrigade.collectionView removeFromSuperview];
             
             //remove former destination myCenter value to prevent the brigade from being called again in this loop
-            thisBrigade.myCenter = CGPointMake(1.0, 1.0);
-
+            thisBrigade.currentPosition = CGPointMake(1.0, 1.0);
         }
     }    
     
     //remove from superview and delete the former brigade
     if (brigadeToDelete){
-
-        
         //remove from observing
         //________does not seem to effect anything
         [[NSNotificationCenter defaultCenter] removeObserver:brigadeToDelete];
@@ -295,17 +254,12 @@ static float currentScale;
         //delay the deletion to keep from crashing when many brigades succeed in attacking end up merging with each other
 //        [setOfBrigades performSelector:@selector(removeObject:) withObject:brigadeToDelete afterDelay:1.0];
     }
-
-
-    
-    
   
     //______******this screws up the zindex******
     //if the destination territory has a armies, animate the addition to the advancing brigade
     if (formerArmiesQuantity > 0){
-        
         //original value to armies
-        int originalSenderBrigadeArmiesQuantity = [senderBrigade.numberOfArmies integerValue];
+        int originalSenderBrigadeArmiesQuantity = [senderBrigade.numberOfArmies intValue];
         
         //update the data source
         senderBrigade.numberOfArmies = [NSNumber numberWithInt:newArmiesQuantity];
@@ -326,17 +280,11 @@ static float currentScale;
             int i;
             
             for (i = originalSenderBrigadeArmiesQuantity; i < newArmiesQuantity; i++){
-                                
                 NSIndexPath* thisIndexPath = [NSIndexPath indexPathForRow:i  inSection:0];
-                
                 [indexPathArray addObject:thisIndexPath];
-                
-
             }
             
             [senderBrigade.collectionView insertItemsAtIndexPaths:indexPathArray];
-            
-            
             
         }completion:nil];
         
@@ -345,12 +293,7 @@ static float currentScale;
     }
     //************
 
-    
-
-
-
     //****animate the change, show the armies added one at a time
-//    
 //    //update the armies number in the layout otherwise the size of the collection view may be too small for all the armies
 //    [(SPYBrigadeViewLayout*) senderBrigade.collectionView.collectionViewLayout setArmies:newArmiesQuantity];
 //    [(SPYBrigadeViewLayout*) senderBrigade.collectionView.collectionViewLayout reAssesMaxColumnStack];
@@ -383,9 +326,6 @@ static float currentScale;
 //    }
     //************
 
-    
-    
-    
     //get collectionview size from layout object
     CGSize brigadeLayoutSize = [senderBrigade.collectionView.collectionViewLayout collectionViewContentSize];
     
@@ -401,28 +341,25 @@ static float currentScale;
     senderBrigade.collectionView.transform = CGAffineTransformMakeScale(thisScaleFactor, thisScaleFactor);
     
     //set the brigadeViewController's CGPoint center property
-    senderBrigade.myCenter = thisTerritory.brigadeCenter;
+    senderBrigade.currentPosition = brigadeCenter;
             
     //move the collection view to the prescribed center
     [UIView animateWithDuration:0.2 animations:^{
-        
-        senderBrigade.collectionView.center = senderBrigade.myCenter;
+        senderBrigade.collectionView.center = senderBrigade.currentPosition;
     }];
     
     //reset the brigade's originalCenter variable
-    senderBrigade.originalCenter = senderBrigade.myCenter;
+    senderBrigade.originalPosition = senderBrigade.currentPosition;
     
     //_______********** add the senderBrigade to the set of brigades????
     //no, this doesn't help anything....
 //    [self.setOfBrigades addObject:senderBrigade];
-    
 }
 
 
 -(void)animatedBrigadeAdditions:(NSDictionary*)stuff{
-
     SPYBrigadeViewController* senderBrigade = [stuff objectForKey:@"senderBrigade"];
-    int i = [[stuff objectForKey:@"numeral"] integerValue];
+    int i = [[stuff objectForKey:@"numeral"] intValue];
     
     //update the data source
     senderBrigade.numberOfArmies = [NSNumber numberWithInt:i];
@@ -442,17 +379,14 @@ static float currentScale;
 }
 
 
-
 #pragma mark - brigade battle
 
 -(void)removeBrigadeFromSet:(NSNotification*)note{
-    
-    NSLog(@"REMOVE BRIGADE FROM SET FIRES!!!!!!!!!!!!!!!!!!!!!!!!!");
+    NSLog(@"REMOVE-BRIGADE-FROM-SET FIRES!!!!!!!!!!!!!!!!!!!!!!!!!");
     
     SPYBrigadeViewController* thisBrigade = [note object];
     
     if (thisBrigade){
-        
         //check that it is in the active set
         if ([self.setOfBrigades containsObject:thisBrigade]){
             
@@ -461,21 +395,14 @@ static float currentScale;
             
             //add to the junkyard of armies
             if (!self.setOfRemovedBrigades){
-                
                 self.setOfRemovedBrigades = [NSMutableSet setWithCapacity:1];
-                
             }else{
-                
-                
                 [self.setOfRemovedBrigades addObject:thisBrigade];
-                
             }
             
             //and remove from the set of active brigades
             [self.setOfBrigades removeObject:thisBrigade];
         }
-        
-
         
         //____********   THIS APPEARS TO CAUSE CRASHING AT END OF COMBAT  ********________
 //        [self.setOfBrigades performSelector:@selector(removeObject:) withObject:thisBrigade afterDelay:1.0];
@@ -484,7 +411,6 @@ static float currentScale;
 
 
 #pragma mark - relations between territories and labels and tapviews
-
 
 -(void)addTerritoryLabel:(NSNotification*)note{
     
@@ -502,25 +428,22 @@ static float currentScale;
     //define the territory whose name label sent the note
     SPYTerritoryTemplate* thisTerritory = [[note userInfo] objectForKey:@"territory"];
     
-    
     //add constraints for the nameText label to move with the territory's name label when selected
     NSLayoutConstraint* thisXConstraint = [NSLayoutConstraint constraintWithItem:thisLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:thisTerritory.name attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0];
     
     NSLayoutConstraint* thisYConstraint = [NSLayoutConstraint constraintWithItem:thisLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:thisTerritory.name attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0.0];
     
-    //this necessary to remove default autoresizing constraint that would cause a noncritical error in the log
+    //this is necessary to remove default autoresizing constraint that would cause a noncritical error in the log
     [thisLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
     
     //add contraints the nearest ancestor view
-    //********________   CAUSES A NON CRITCAL ERROR DUE TO NSCONSTRAINT HEIRARCHY ERROR  ___________*************
+    //********________   CAUSES A NON CRITCAL ERROR DUE TO NSCONSTRAINT HIERARCHY ERROR  ___________*************
     [self addConstraint:thisXConstraint];
     [self addConstraint:thisYConstraint];
 }
 
 
-
 #pragma mark - reduction circle methods
-
 -(void)createReductionCircle:(NSNotification*)note{
     
     //access the sending territory for the center coordinates
@@ -553,7 +476,6 @@ static float currentScale;
        
         [self.reductionCircleView setAlpha:8.0];
     }];
-    
 }
 
 
@@ -567,13 +489,10 @@ static float currentScale;
     
     //release object after fade out
     [self.reductionCircleView performSelector:@selector(removeFromSuperview) withObject:nil afterDelay:1.0];
-    
-    
 }
 
 
 #pragma mark - when territory is tapped
-
 -(void)tapped:(NSNotification*)note{
     
     //obtain the view that sent the tap message
@@ -622,13 +541,10 @@ static float currentScale;
         SPYNameTextLabel* thisLabel = [dicNameLabels objectForKey:view.name.territoryShortName];
         
         if (thisLabel) {
-            
             [self performSelector:@selector(makeNameTextLabelReappear:) withObject:thisLabel afterDelay:standardFadeDuration];
         }
-        
 //        [self fadeInTerritoryLabels:nil];
     }
-    
 }
 
 
@@ -655,26 +571,18 @@ static float currentScale;
 }
 
 
-
 -(void)moveBigTappedObjectBackToPlace:(NSArray*)array{
-    
     [self.territoryView insertSubview:[array objectAtIndex:0] atIndex:[[array objectAtIndex:1] intValue]];
-    
 }
 
 -(void)makeNameTextLabelReappear:(SPYNameTextLabel*)thisLabel{
-    
     [thisLabel setAlpha:1.0];
-    
 }
 
 
 #pragma mark - scroll view delegate methods
-
 -(UIView*)viewForZoomingInScrollView:(UIScrollView *)scrollView{
-    
     return self;
-    
 }
 
 - (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale{
@@ -725,29 +633,18 @@ static float currentScale;
     
 }
 
-
 #pragma mark - reset map
-
 -(void)resetWorldMap{
-    
-    NSLog(@"resetWorldMap called");
-    
-    
-    
     for (SPYBrigadeViewController* brigade in setOfBrigades){
-        
         [brigade.collectionView removeFromSuperview];
     }
     
-    
 //    for (SPYNameTextLabel* label in dicNameLabels){
-//        
 //        [label removeFromSuperview];
 //    }
     
     [self.dicNameLabels removeAllObjects];
     [self.nameTextView removeFromSuperview];
-    
     
     //unregister territories and remove from superview
     for (SPYTerritoryTemplate* territory in arrayTerritories){
@@ -756,8 +653,6 @@ static float currentScale;
     }
     [self.arrayTerritories removeAllObjects];
     [self.territoryView removeFromSuperview];
-    
-    
     [self.armiesView removeFromSuperview];
     
     //unregister brigade controllers from NSNotificationCenter
@@ -771,7 +666,6 @@ static float currentScale;
     self.armiesView = nil;
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-
 }
 
 

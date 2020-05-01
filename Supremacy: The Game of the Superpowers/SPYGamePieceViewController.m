@@ -22,18 +22,21 @@
 @property BOOL inBackgroundFlag;
 @property BOOL isQuedToAttack;
 @property BOOL hasShownReductionFlag;
+@property (strong, nonatomic) NSTimer *touchTimeStart;
 
 @end
 
 
 @implementation SPYGamePieceViewController
 
+@synthesize gameBoardDelegate;
+
 @synthesize numberOfArmies;
 @synthesize brigadeColor;
 @synthesize brigadeColorName;
 @synthesize nationIndex;
-@synthesize myCenter;
-@synthesize originalCenter;
+@synthesize currentPosition;
+@synthesize originalPosition;
 @synthesize invisibleCellFlag;
 @synthesize isNavyFlag;
 
@@ -45,8 +48,6 @@
 @synthesize inBackgroundFlag;
 @synthesize isQuedToAttack;
 @synthesize hasShownReductionFlag;
-
-
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -65,12 +66,11 @@
     self.invisibleCellFlag = NO;
     self.inBackgroundFlag = NO;
     self.isQuedToAttack = NO;
-
+    
+//    self.touchTimeStart = CVT;
     
     //register cell for collectionview
     [[self collectionView] registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"Cell"];
-    
-    
     
     //add longpress gesture recognizer, need to circumvent existing longpress gesture first
     UILongPressGestureRecognizer* pressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressGesture:)];
@@ -79,18 +79,21 @@
     
     //make the default gesture recognizer wait until the custom fails
     for (UIGestureRecognizer* aRecognizer in recognizers) {
-        
         if ([aRecognizer isKindOfClass:[UILongPressGestureRecognizer class]]) {
-            
             [aRecognizer requireGestureRecognizerToFail:pressGesture];
         }
     }
     
     //shorten duration of time for long press to activate
-    pressGesture.minimumPressDuration = 0.01;
+    pressGesture.minimumPressDuration = 0.01; // originally 0.01
     
     //add gesture recognizer to the collection view
     [self.collectionView addGestureRecognizer:pressGesture];
+    
+    // Tap Gesture
+//    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture:)];
+//
+//    [self.collectionView addGestureRecognizer:tapGesture];
     
     //receive notes from territory about what to do when amries move
     NSNotificationCenter* nc = [NSNotificationCenter defaultCenter];
@@ -103,30 +106,37 @@
     [nc addObserver:self selector:@selector(brigadeBattleLoss:) name:@"brigadeBattleLoss" object:nil];
     
     [self.collectionView setClipsToBounds:NO];
-    
-    
 }
 
-
 -(void)setInitialTerritory:(id)terr{
-    
     self.myTerritory = (SPYTerritoryTemplate*) terr;
 }
 
-
 -(void)setUnderneathTerritoryFromElsewhere:(id)terr{
-    
     self.underneathTerritory = (SPYTerritoryTemplate*) terr;
 }
 
 
+#pragma mark - direct move methods
+
+-(void)moveToPoint:(CGPoint)point {
+    self.currentPosition = point;
+    self.originalPosition = point;
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        [[self collectionView] setCenter:point];
+    }];
+}
+
 #pragma mark - gesture methods
 
+-(void)handleTapGesture:(UITapGestureRecognizer*)sender {
+    NSLog(@"Tap Gesture received");
+}
+
 -(void)handleLongPressGesture:(UILongPressGestureRecognizer*)sender{
-    
     //dismiss the gesture if the brigade is cued to attack or if its in the background
     if ((isQuedToAttack) || (inBackgroundFlag)){
-        
         return;
     }
     
@@ -137,20 +147,21 @@
     CGPoint p2 = [[[self collectionView] superview] convertPoint:p1 fromView:self.collectionView];
     
     //find a center for the view that pushes the view up and the touch is at the bottom
-    float changeInY = 0 * [self.numberOfArmies floatValue];  //oringally 9.5
+    float changeInY = 0 * [self.numberOfArmies floatValue];  //originally 9.5
     CGPoint movedCenter = CGPointMake(p2.x, p2.y - changeInY);
     
     //record coordinates when press began to know the original territory
     if (sender.state == UIGestureRecognizerStateBegan){
-        
-        //        NSLog(@"touch begins");
+        self.touchTimeStart = [NSTimer scheduledTimerWithTimeInterval:0.3 repeats:NO block:^(NSTimer * _Nonnull timer) {
+            // NoOP, validity of timer is used when touch ends
+        }];
         
         originalPoint = p2;
         
         self.hasShownReductionFlag = NO;
         
         //establish the original point in case the brigade lands on a non-territory and dismisses the move
-        self.originalCenter = CGPointMake(myCenter.x, myCenter.y);
+        self.originalPosition = CGPointMake(currentPosition.x, currentPosition.y);
         
         //shift brigade to have touch at bottom
         [UIView animateWithDuration:0.2 animations:^{
@@ -160,7 +171,7 @@
         
         
         //tell everything else to fade out
-        NSValue* centerValue = [NSValue valueWithCGPoint:self.originalCenter];
+        NSValue* centerValue = [NSValue valueWithCGPoint:self.originalPosition];
         
         //send note to all fellow territories that they should fade in
         NSDictionary* dicTwo = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -191,6 +202,9 @@
         CGPoint p2InTerritoryContext = [self.underneathTerritory convertPoint:p2 fromView:self.collectionView.superview];
         if (![underneathTerritory.path containsPoint:p2InTerritoryContext]){
             
+            // This is not a tap event
+            [self.touchTimeStart invalidate];
+            
             //sent note to territories and let the underneath terr identify itself
             NSDictionary* identifyDic = [NSDictionary dictionaryWithObjectsAndKeys:
                                          [NSValue valueWithCGPoint:p2], @"center",
@@ -204,41 +218,50 @@
         
         int distanceX = abs((int)(originalPoint.x - movedCenter.x));
         int distanceY = abs((int)(originalPoint.y - movedCenter.y));
-        
         float measuredDistance =  sqrtf((distanceX ^ 2) + (distanceY ^ 2));
-        
-//        NSLog(@"this is the measured distance: %5.2f", measuredDistance);
-        
+                
         if ((self.hasShownReductionFlag == NO) && (measuredDistance > 6)){
-            
-            NSLog(@"gamepiece sends note to show reduction circle");
-            
             //send note to spyworldmapview
             [[NSNotificationCenter defaultCenter] postNotificationName:@"createReductionCircle" object:self.myTerritory];
-            
             self.hasShownReductionFlag = YES;
         }
-        
-        
-        
     }
     
     //action when the long press has ended
     if (sender.state == UIGestureRecognizerStateEnded){
-        
+         
         [self.reduceBrigadeByOneArmy invalidate];
         
-        //set the timer to automatically return the army to the collection view center if no territory claims the destination
-        self.returnArmyToOrigin = [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(timerDismissArmiesMove) userInfo:nil repeats:NO];
-        
-        NSDictionary* thisDic = [NSDictionary dictionaryWithObjectsAndKeys:
-                                 [NSValue valueWithCGPoint:originalCenter], @"originalPoint",
-                                 [NSValue valueWithCGPoint:p2], @"destinationPoint",
-                                 self.nationIndex, @"nationIndex",
-                                 nil];
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"armyLongPressEnd" object:self userInfo:thisDic];
-        
+        // Recognized as a tap gesture
+        if ([self.touchTimeStart isValid]) {
+            NSLog(@"tap gesture recognized");
+            
+            // only split when at least 2 armies are present
+            if ([self.numberOfArmies intValue] > 1) {
+                // tell territory that it has been tapped
+                [self.myTerritory splitArmiesWithCenterPoint:originalPosition];
+                
+                // TODO: remove this in favor of gameBoard / worldMap handling it ?
+                [self moveToPoint:self.myTerritory.brigadeCenterOriginalWithSplit];
+                
+                // reduce numberOfArmies in gamePiece by 1
+                int newArmiesInt = [self.numberOfArmies intValue] - 1;
+                self.numberOfArmies = [NSNumber numberWithInt:newArmiesInt];
+                [self reduceArmiesTo:self.numberOfArmies];
+            }
+            
+        } else {
+            //set the timer to automatically return the army to the collection view center if no territory claims the destination
+            self.returnArmyToOrigin = [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(timerDismissArmiesMove) userInfo:nil repeats:NO];
+            
+            NSDictionary* thisDic = [NSDictionary dictionaryWithObjectsAndKeys:
+                                     [NSValue valueWithCGPoint:originalPosition], @"originalPoint",
+                                     [NSValue valueWithCGPoint:p2], @"destinationPoint",
+                                     self.nationIndex, @"nationIndex",
+                                     nil];
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"armyLongPressEnd" object:self userInfo:thisDic];
+        }
         
         //tell everything else to fade in
         NSValue* centerValue = [NSValue valueWithCGPoint:self.collectionView.center];
@@ -250,7 +273,6 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:@"territoryFadeIn" object:nil userInfo:dicTwo];
         
         if (self.hasShownReductionFlag == YES){
-        
             [[NSNotificationCenter defaultCenter] postNotificationName:@"destroyReductionCircle" object:self.myTerritory];
         }
     }
@@ -261,7 +283,6 @@
         NSLog(@"gesture recognizer failed");
         
         if (self.hasShownReductionFlag == YES){
-            
             [[NSNotificationCenter defaultCenter] postNotificationName:@"destroyReductionCircle" object:self.myTerritory];
         }
     }
@@ -277,7 +298,7 @@
         self.returnArmyToOrigin = [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(timerDismissArmiesMove) userInfo:nil repeats:NO];
         
         NSDictionary* thisDic = [NSDictionary dictionaryWithObjectsAndKeys:
-                                 [NSValue valueWithCGPoint:originalCenter], @"originalPoint",
+                                 [NSValue valueWithCGPoint:originalPosition], @"originalPoint",
                                  [NSValue valueWithCGPoint:p2], @"destinationPoint",
                                  self.nationIndex, @"nationIndex",
                                  nil];
@@ -295,13 +316,10 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:@"territoryFadeIn" object:nil userInfo:dicTwo];
         
         if (self.hasShownReductionFlag == YES){
-            
             [[NSNotificationCenter defaultCenter] postNotificationName:@"destroyReductionCircle" object:self.myTerritory];
         }
     }
 }
-
-
 
 
 #pragma mark - Army Movement Follow Up
@@ -323,9 +341,9 @@
         //move center and fix myCenter to orignal value
         [UIView animateWithDuration:0.2 animations:^{
             
-            self.myCenter = CGPointMake(originalCenter.x, originalCenter.y);
+            self.currentPosition = CGPointMake(originalPosition.x, originalPosition.y);
             
-            [[self collectionView] setCenter:self.myCenter];
+            [[self collectionView] setCenter:self.currentPosition];
         }];
         
         //reset the original armies number
@@ -340,41 +358,34 @@
         
         //move center and fix myCenter to orignal value
         [UIView animateWithDuration:0.2 animations:^{
-            
-            self.myCenter = CGPointMake(originalCenter.x, originalCenter.y);
-            
-            [[self collectionView] setCenter:self.myCenter];
+            self.currentPosition = CGPointMake(originalPosition.x, originalPosition.y);
+            [[self collectionView] setCenter:self.currentPosition];
         }];
         
         //reset the original armies number
         [self.myTerritory updateArmies:self.numberOfArmies Nation:self.myTerritory.currentNationIndex];
         
         self.isQuedToAttack = NO;
-        
     }
 }
 
 
-
 -(void)timerDismissArmiesMove{
-    
     NSLog(@"TIMER DISMISS ARMIES MOVE FIRES!!!!!!!!!!!!!!!!!!");
     //move center and fix myCenter to orignal value
     [UIView animateWithDuration:0.2 animations:^{
         
-        self.myCenter = CGPointMake(originalCenter.x, originalCenter.y);
+        self.currentPosition = CGPointMake(originalPosition.x, originalPosition.y);
         
-        [[self collectionView] setCenter:myCenter];
+        [[self collectionView] setCenter:currentPosition];
     }];
     
     //reset the original armies number
     [self.myTerritory updateArmies:self.numberOfArmies Nation:self.myTerritory.nationIndex];
-    
 }
 
 
 -(void)acceptArmiesMove:(NSNotification*)note{
-    
     NSLog(@"ACCEPT ARMIES MOVE FIRES!!!!!!!!!!!!!!!!!!!!!!!");
     //make a note: the note's object is the destination territory
     
@@ -394,16 +405,16 @@
             self.isQuedToAttack = YES;
             
         } else {
-            //when an army is moved to an empty or friendly territory
-            
+            // when an army is moved to an empty or friendly territory
             self.isQuedToAttack = NO;
             
-            //delete ALL armies at former territory
-            [self.myTerritory updateArmies:@0 Nation:self.nationIndex];
+            //delete armies at former territory
+            NSNumber *armies = [self.gameBoardDelegate getArmiesForTerritory:[self.myTerritory.name text]];
+            int newCountAtFormerTerritory = [armies intValue] - [self.numberOfArmies intValue];
+            [self.myTerritory updateArmies:[NSNumber numberWithInt:newCountAtFormerTerritory] Nation:self.nationIndex];
             
             //only if the territory is not cued to attack does the brigade assume a new myterritory
             self.myTerritory = [note object];
-            
         }
         
         //****when note is sent from the battle drill
@@ -414,8 +425,10 @@
             
             isQuedToAttack = NO;
             
-            //delete ALL armies at former territory
-            [self.myTerritory updateArmies:@0 Nation:self.nationIndex];
+            //delete armies at former territory
+            NSNumber *armies = [self.gameBoardDelegate getArmiesForTerritory:[self.myTerritory.name text]];
+            int newCountAtFormerTerritory = [armies intValue] - [self.numberOfArmies intValue];
+            [self.myTerritory updateArmies:[NSNumber numberWithInt:newCountAtFormerTerritory] Nation:self.nationIndex];
             
             //the brigade assumes a new myterritory
             self.myTerritory = [note object];
@@ -458,9 +471,8 @@
 }
 
 -(void)delayedReduceBrigade{
-    
-    NSLog(@"DELAYED REDUCEB RIGADE FIRES!!!!!!!!!!!!!!!!!");
-    numberOfArmies = [NSNumber numberWithInt:[numberOfArmies integerValue] -1];
+    NSLog(@"DELAYED REDUCE BRIGADE FIRES!!!!!!!!!!!!!!!!!");
+    numberOfArmies = [NSNumber numberWithInt:[numberOfArmies intValue] -1];
     
     invisibleCellFlag = NO;
     
@@ -471,22 +483,16 @@
                                            42, (19 * [self.numberOfArmies integerValue]));
     
     [self.collectionView reloadData];
-    
 }
-
 
 
 #pragma mark - battle
 
-
 -(void)brigadeBattleLoss:(NSNotification*)note{
-    
     NSDictionary* thisDic = [note userInfo];
-    
     CGPoint thisCenterPoint = [[thisDic objectForKey:@"originalCenter"] CGPointValue];
     
-    if (CGPointEqualToPoint(self.originalCenter, thisCenterPoint)){
-        
+    if (CGPointEqualToPoint(self.originalPosition, thisCenterPoint)){
         NSLog(@"we have a battle loss matching brigade: %@  with updated armies: %@" , [self.myTerritory class], [thisDic objectForKey:@"armies"]);
         
         //set brigade armies quantity
@@ -494,8 +500,6 @@
         
         //set the territory's armies quantity
         [self.myTerritory updateArmies:self.numberOfArmies Nation:self.nationIndex];
-        
-        
         
         //if the brigade is destroyed all together...
         if ([self.numberOfArmies integerValue] < 1) {
@@ -511,32 +515,51 @@
         } else{
             
             //update the armies number in the layout otherwise the size of the collection view may be too small for all the armies
-            [(SPYBrigadeViewLayout*) self.collectionView.collectionViewLayout setArmies:[self.numberOfArmies integerValue]];
-            [(SPYBrigadeViewLayout*) self.collectionView.collectionViewLayout reAssesMaxColumnStack];
-            
-            
-            
-            //get collectionview size and scale factor from layout object
-            CGSize brigadeLayoutSize = [self.collectionView.collectionViewLayout collectionViewContentSize];
-            
-            //update size of the collection view frame
-            self.collectionView.frame = CGRectMake(self.collectionView.frame.origin.x,
-                                                   self.collectionView.frame.origin.y,
-                                                   brigadeLayoutSize.width, brigadeLayoutSize.height);
-
-            //update the scale factor
-            float thisScaleFactor = [(SPYBrigadeViewLayout*) self.collectionView.collectionViewLayout gamePieceScale];
-            
-            //update the scale
-            self.collectionView.transform = CGAffineTransformMakeScale(thisScaleFactor, thisScaleFactor);
-            
-            //and refresh the view
-            [self.collectionView reloadData];
-            
-            
+            [self reduceArmiesTo:self.numberOfArmies];
+//            [(SPYBrigadeViewLayout*) self.collectionView.collectionViewLayout setArmies:[self.numberOfArmies intValue]];
+//            [(SPYBrigadeViewLayout*) self.collectionView.collectionViewLayout reAssesMaxColumnStack];
+//
+//            //get collectionview size and scale factor from layout object
+//            CGSize brigadeLayoutSize = [self.collectionView.collectionViewLayout collectionViewContentSize];
+//
+//            //update size of the collection view frame
+//            self.collectionView.frame = CGRectMake(self.collectionView.frame.origin.x,
+//                                                   self.collectionView.frame.origin.y,
+//                                                   brigadeLayoutSize.width, brigadeLayoutSize.height);
+//
+//            //update the scale factor
+//            float thisScaleFactor = [(SPYBrigadeViewLayout*) self.collectionView.collectionViewLayout gamePieceScale];
+//
+//            //update the scale
+//            self.collectionView.transform = CGAffineTransformMakeScale(thisScaleFactor, thisScaleFactor);
+//
+//            //and refresh the view
+//            [self.collectionView reloadData];
         }
     }
     
+}
+
+-(void)reduceArmiesTo:(NSNumber *)newArmies {
+    [(SPYBrigadeViewLayout*) self.collectionView.collectionViewLayout setArmies:[newArmies intValue]];
+    [(SPYBrigadeViewLayout*) self.collectionView.collectionViewLayout reAssesMaxColumnStack];
+    
+    //get collectionview size and scale factor from layout object
+    CGSize brigadeLayoutSize = [self.collectionView.collectionViewLayout collectionViewContentSize];
+    
+    //update size of the collection view frame
+    self.collectionView.frame = CGRectMake(self.collectionView.frame.origin.x,
+                                           self.collectionView.frame.origin.y,
+                                           brigadeLayoutSize.width, brigadeLayoutSize.height);
+
+    //update the scale factor
+    float thisScaleFactor = [(SPYBrigadeViewLayout*) self.collectionView.collectionViewLayout gamePieceScale];
+    
+    //update the scale
+    self.collectionView.transform = CGAffineTransformMakeScale(thisScaleFactor, thisScaleFactor);
+    
+    //and refresh the view
+    [self.collectionView reloadData];
 }
 
 
@@ -545,23 +568,18 @@
 
 -(void)territoryTapped:(NSNotification*)note{
     
-    
-    
 }
 
 
 -(void)fadeOut:(NSNotification*)note{
-    
     NSDictionary* thisDic = [note userInfo];
-    
     CGPoint tappedPoint = [[thisDic objectForKey:@"center"] CGPointValue];
     
-    if (!CGPointEqualToPoint(self.collectionView.center, tappedPoint) && !CGPointEqualToPoint(self.originalCenter, tappedPoint)){
+    if (!CGPointEqualToPoint(self.collectionView.center, tappedPoint) && !CGPointEqualToPoint(self.originalPosition, tappedPoint)){
         
         inBackgroundFlag = YES;
         
         [UIView animateWithDuration:standardFadeDuration animations:^{
-            
             self.collectionView.alpha = 0.2;
         }];
     }
@@ -569,33 +587,23 @@
 
 
 -(void)fadeIn:(NSNotification*)note{
-    
     inBackgroundFlag = NO;
     
     if (self.collectionView.alpha < 1.0){
-        
         [UIView animateWithDuration:standardFadeDuration animations:^{
-            
             self.collectionView.alpha = 1.0;
         }];
     }
 }
 
 
-
-
-
-
 #pragma mark - DataSource methods
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-    
     return 1;
-    
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    
     return [numberOfArmies integerValue];
 }
 

@@ -11,13 +11,16 @@
 #import "Territories.h"
 #import "SPYWorldMapView.h"
 #import "SPYTemplateLayerView.h"
+#import "SPYGameBoardListener.h"
 
 
 @interface SPYGameBoardIPadViewController ()
 
+@property (strong, nonatomic) SPYGameBoardListener *gameBoardListener;
+
 @property (strong, nonatomic) IBOutlet UIScrollView* theScrollView;
 @property (strong, nonatomic) IBOutlet SPYWorldMapView* myMapView;
-@property (strong, nonatomic) IBOutlet SPYWorldMapView* spyMapView;
+//@property (strong, nonatomic) IBOutlet SPYWorldMapView* spyMapView;
 
 @end
 
@@ -25,7 +28,7 @@
 
 @synthesize theScrollView;
 @synthesize myMapView;
-@synthesize spyMapView;
+//@synthesize spyMapView;
 
 
 #pragma mark - initialize
@@ -44,15 +47,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-
-
-    
 }
 
 
 -(void)initialSetupWithMatchID:(NSString*)matchID{
-    
+    self.gameBoardListener = [[SPYGameBoardListener alloc] init];
+
     //retrieves ALL data from persistent store
     NSFetchRequest* request = [[NSFetchRequest alloc] init];
     
@@ -93,6 +93,7 @@
     //create and add the world map view
     SPYWorldMapView* myMap = [[SPYWorldMapView alloc] initWithFrame:CGRectMake(0, 0, 2000.0, 1460.0)];
     self.myMapView = myMap;
+    self.myMapView.gameBoardListener = self.gameBoardListener;
     
     //identify myMapView as the scroll delegate
     self.theScrollView.delegate = self.myMapView;
@@ -103,8 +104,6 @@
     
     //initial mapView setup... add notification observers
     [myMapView initialSetup];
-    
-    
     
     
     //create map's subviews: first the territoryView
@@ -131,10 +130,7 @@
     [myMapView bringSubviewToFront:myMapView.armiesView];
     
     
-    
-    
     //_______prepare world map
-    
     
     //generate array of territories using priviate method
     myMapView.arrayTerritories = [NSMutableArray arrayWithArray:[self returnArrayOfTerritoriesWithMatchID:matchID]];
@@ -145,7 +141,6 @@
         //add the subview
         [myMapView.territoryView addSubview:object];
     }
-    
     //______done preparing world map
     
     
@@ -157,12 +152,10 @@
     [self.myMapView setOpaque:NO];
     
     [self.theScrollView addSubview:self.myMapView];
-    
 }
 
 
 -(NSMutableArray*)returnArrayOfTerritoriesWithMatchID:(NSString*)matchID{
-    
     NSMutableArray* returnThisArray = [NSMutableArray arrayWithCapacity:1];
     
     SPYScandanavia* scand = [[SPYScandanavia alloc] initWithFrame:CGRectMake(964, 226, 264, 202)];
@@ -509,25 +502,27 @@
     
     
     //loop through the array of territories
-    for (SPYTerritoryTemplate* object in returnThisArray){
+    for (SPYTerritoryTemplate* territory in returnThisArray){
         
         //hand over the managedObjectContext
-        object.managedObjectContext = self.managedObjectContext;
+        territory.managedObjectContext = self.managedObjectContext;
+        
+        // hand over gameBoardListener
+        territory.gameBoardDelegate = myMapView.gameBoardListener;
         
         //initiate the territory's label ; reset the frame ;
-        [object firstActivationWithMatchID:matchID];
+        [territory firstActivationWithMatchID:matchID];
         
         //set opaque to no
-        [object setOpaque:NO];
+        [territory setOpaque:NO];
         
         //add the gesture recognizers
-        UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc] initWithTarget:object action:@selector(tapped:)];
-        [object addGestureRecognizer:tap];
+        UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc] initWithTarget:territory action:@selector(tapped:)];
+        [territory addGestureRecognizer:tap];
         
         //set the original x and y position values
-        object.originalX = [NSNumber numberWithFloat:object.frame.origin.x];
-        object.originalY = [NSNumber numberWithFloat:object.frame.origin.y];
-        
+        territory.originalX = [NSNumber numberWithFloat:territory.frame.origin.x];
+        territory.originalY = [NSNumber numberWithFloat:territory.frame.origin.y];
     }
     
     return returnThisArray;
@@ -538,24 +533,13 @@
 #pragma mark - reset gameboard
 
 -(void)dismissGameBoardObjects{
-    
     [self.myMapView resetWorldMap];
-    
     [self.myMapView removeFromSuperview];
-    
     self.myMapView = nil;
-    
     [self.territoriesArray removeAllObjects];
-    
     [self.theScrollView removeFromSuperview];
-    
     self.theScrollView = nil;
-    
-    
-    
-    
 }
-
 
 
 #pragma mark - memory warnings
